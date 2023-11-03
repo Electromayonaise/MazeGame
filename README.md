@@ -26,3 +26,6 @@
     
   </ul>
 </div>
+
+### Final commit of first delivery:
+- Commit ID: [54fbf95](https://github.com/Electromayonaise/MazeGame/commit/54fbf958dfa7e38b58d75a397b0878e424437060)
