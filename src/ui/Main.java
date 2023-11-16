@@ -1,8 +1,6 @@
 package ui;
 
-import model.AdjacencyListGraph;
-import model.AdjacencyMatrixGraph;
-import model.Graph;
+import model.*;
 
 import java.util.Scanner;
 
@@ -12,13 +10,20 @@ public class Main {
 
     public Main() {
         reader = new Scanner(System.in);
-        chooseGraphType();
+      //  chooseGraphType();
     }
 
     public static void main(String[] args) {
         Main main = new Main();
-        main.menu();
-        System.out.println("Bye");
+        test();
+      //  main.menu();
+       // System.out.println("Bye");
+    }
+    public static void test(){
+        MazeGenerator mazeGenerator=new MazeGenerator();
+        Graph< MatrixCor> maze= mazeGenerator.generateMaze(5,5,true,false);
+        System.out.println(maze);
+
     }
 
     public void chooseGraphType() {
