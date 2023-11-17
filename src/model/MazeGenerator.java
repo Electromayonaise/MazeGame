@@ -42,12 +42,8 @@ public class MazeGenerator {
             if(!notVisitedNeighbors.isEmpty()){
                 stack.push(current);
                 MatrixCor neighborToConnect=chooseNotVisitedNeighborRandomly(notVisitedNeighbors);
-                boolean flag=graph.addEdge(current,neighborToConnect,1);
-                if(flag){
-                    System.out.println("ME AGREGA");
-                }else{
-                    System.out.println("NO ME AGREGA");
-                }
+                graph.addEdge(current,neighborToConnect,1);
+
 
                 visited[neighborToConnect.getRow()][neighborToConnect.getCol()]=true;
                 stack.push(neighborToConnect);
