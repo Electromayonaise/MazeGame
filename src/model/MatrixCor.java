@@ -28,17 +28,27 @@ public class MatrixCor {
 
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        MatrixCor matrixCor = (MatrixCor) o;
-        return col == matrixCor.col && row == matrixCor.row;
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;  // Son la misma instancia
+        }
+
+        if (obj == null || getClass() != obj.getClass()) {
+            return false; // No son de la misma clase
+        }
+
+        MatrixCor otraInstancia = (MatrixCor) obj; // Cast a la clase específica
+
+        // Comparación de los campos row y col
+        return this.row == otraInstancia.row && this.col == otraInstancia.col;
     }
 
+    // También sería recomendable sobrescribir el método hashCode
     @Override
     public int hashCode() {
-        return Objects.hash(col, row);
+        return Objects.hash(row, col);
     }
+
 
     @Override
     public String toString(){

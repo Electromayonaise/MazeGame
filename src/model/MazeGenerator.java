@@ -10,6 +10,8 @@ public class MazeGenerator {
         rand=new Random();
     }
 
+    //LAS ROW Y LAS COL DEBEN SER IMPAR
+
     public Graph<MatrixCor> generateMaze(int row, int col, boolean adjacencyList, boolean directed){
         Graph<MatrixCor> graph;
         boolean [][]visited= new boolean[row][col];

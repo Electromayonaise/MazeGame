@@ -20,9 +20,11 @@ public class Main {
        // System.out.println("Bye");
     }
     public static void test(){
-        MazeGenerator mazeGenerator=new MazeGenerator();
-        Graph< MatrixCor> maze= mazeGenerator.generateMaze(5,5,true,false);
-        System.out.println(maze);
+        //MazeGenerator mazeGenerator=new MazeGenerator();
+       // Graph< MatrixCor> maze= mazeGenerator.generateMaze(5,5,true,false);
+        MapGenerator mapGenerator=new MapGenerator();
+        int[][] map= mapGenerator.generateMap(7,7,true,true);
+       // System.out.println(map);
 
     }
 
