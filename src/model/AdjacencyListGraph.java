@@ -2,6 +2,7 @@ package model;
 
 import java.util.*;
 
+
 public class AdjacencyListGraph<T> implements Graph<T> {
     private boolean weighted;
 
@@ -73,6 +74,7 @@ public class AdjacencyListGraph<T> implements Graph<T> {
         return Collections.emptyList();
     }
 
+
     @Override
     public String toString() {
         StringBuilder msg = new StringBuilder("Adjacency List:\n");
@@ -104,6 +106,55 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     public boolean isDirected() {
         return directed;
     }
+
+    @Override
+    public List<T> getShortestPath(T origin, T destination) {
+        List<T> shortestPath = new ArrayList<>();
+        return shortestPath;
+    }
+
+    public List<T> bfs(T origin, T destination, HashSet<T> visited) {
+        Queue<T> queue = new LinkedList<>();
+        queue.add(origin);
+        visited.add(origin);
+        T current;
+        //la key es un nodo de la ruta y el value el nodo del que provengo
+        Map<T, T> mapOfPrevs = new HashMap<>();
+
+
+        while (!queue.isEmpty()) {
+            current = queue.poll();
+            List<T> neighbors = getNeighbors(current);
+            for (T neighbor : neighbors) {
+                if (!visited.contains(neighbor)) {
+                    //llegamos al neighbor a traves del current
+                    mapOfPrevs.put(neighbor, current);
+                    queue.add(neighbor);
+                    visited.add(neighbor);
+                }
+                if (visited.contains(destination)) {
+                    break;
+                }
+            }
+        }
+
+        List<T> path=buildPath(origin,destination,mapOfPrevs);
+        return path;
+
+    }
+
+    private List<T> buildPath(T origin, T destination, Map<T, T> mapOfPrevs) {
+        List<T> list = new ArrayList<>();
+        T current = destination;
+        while (current !=origin){
+            list.add(current);
+            current=mapOfPrevs.get(current);
+        }
+        Collections.reverse(list);
+        return list;
+    }
+
+
 }
 
 

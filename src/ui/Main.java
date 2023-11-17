@@ -23,7 +23,7 @@ public class Main {
         //MazeGenerator mazeGenerator=new MazeGenerator();
        // Graph< MatrixCor> maze= mazeGenerator.generateMaze(5,5,true,false);
         MapGenerator mapGenerator=new MapGenerator();
-        int[][] map= mapGenerator.generateMap(7,7,false,false);
+        int[][] map= mapGenerator.generateMap(7,7,true,true);
        // System.out.println(map);
 
     }

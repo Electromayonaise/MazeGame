@@ -5,10 +5,12 @@ import java.util.Objects;
 public class MatrixCor {
     private int col;
     private int row;
+
     public MatrixCor(int row, int col) {
         this.col = col;
         this.row = row;
     }
+
     public int getCol() {
         return col;
     }
@@ -24,7 +26,6 @@ public class MatrixCor {
     public void setRow(int row) {
         this.row = row;
     }
-
 
 
     @Override
@@ -51,7 +52,7 @@ public class MatrixCor {
 
 
     @Override
-    public String toString(){
-        return "row"+row+" | col"+col;
+    public String toString() {
+        return "row" + row + " | col" + col;
     }
 }

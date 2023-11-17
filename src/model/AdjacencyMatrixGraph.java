@@ -163,6 +163,14 @@ public class AdjacencyMatrixGraph<T> implements Graph<T> {
         return directed;
     }
 
+    @Override
+
+    public List<T> getShortestPath(T origin, T destination) {
+        ArrayList<T> shortestPath = new ArrayList<>();
+        return null;
+    }
+
+
 }
 
 
