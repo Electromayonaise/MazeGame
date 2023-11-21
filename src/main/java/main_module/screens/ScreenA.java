@@ -21,8 +21,8 @@ public class ScreenA extends BaseScreen {
     private final double INITIAL_PLAYER_POS_Y = 65;
     private final int INITIAL_PLAYER_HP = 5;
 
-    private final int MAX_ROW = 7;
-    private final int MAX_COL = 7;
+    private final int MAX_ROW = 21;
+    private final int MAX_COL = 21;
 
     private boolean adjacencyList;
 
