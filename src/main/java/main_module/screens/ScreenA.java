@@ -21,8 +21,8 @@ public class ScreenA extends BaseScreen {
     private final double INITIAL_PLAYER_POS_Y = 65;
     private final int INITIAL_PLAYER_HP = 5;
 
-    private final int MAX_ROW = 15;
-    private final int MAX_COL = 19;
+    private final int MAX_ROW = 47;
+    private final int MAX_COL = 47;
 
     /**
      * Creates a new instance of the ScreenA class.
@@ -87,7 +87,7 @@ public class ScreenA extends BaseScreen {
                     destroyableTilesMatrix[i][j] = 0;
                     // Only odd coordinates may or may not have destroyableTiles, except (1,1) && (1, 3) && (3, 1), and with no enemies
                 } else if (i % 2 == 1 && j % 2 == 1 && !((i == 1 && j == 1) || (i == 1 && j == 3) || (i == 3 && j == 1)) && enemyMatrix[i][j] == 0) {
-                    double probability = 0.3; // 30% chance of having a destroyableTile
+                    double probability = 0; // 30% chance of having a destroyableTile
                     destroyableTilesMatrix[i][j] = (random.nextDouble() < probability) ? 1 : 0;
                 } else {
                     destroyableTilesMatrix[i][j] = 0;

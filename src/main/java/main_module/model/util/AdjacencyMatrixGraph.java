@@ -1,43 +1,13 @@
 package main_module.model.util;
+import java.util.*;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * Represents an adjacency matrix implementation of a graph.
- *
- * @param <T> The type of the nodes in the graph.
- */
 public class AdjacencyMatrixGraph<T> implements Graph<T> {
-
-    /**
-     * Represents the dynamic matrix to store graph information.
-     */
     private ArrayList<ArrayList<Integer>> dynamicMatrix;
-
-    /**
-     * Represents a map to store nodes and their corresponding matrix indices.
-     */
     private LinkedHashMap<T, Integer> map;
-
-    /**
-     * Indicates whether the graph is weighted.
-     */
     private boolean weighted;
 
-    /**
-     * Indicates whether the graph is directed.
-     */
     private boolean directed;
 
-    /**
-     * Constructs an AdjacencyMatrixGraph with the specified characteristics.
-     *
-     * @param weighted  Indicates whether the graph is weighted.
-     * @param directed Indicates whether the graph is directed.
-     */
     public AdjacencyMatrixGraph(boolean weighted, boolean directed) {
         dynamicMatrix = new ArrayList<>();
         map = new LinkedHashMap<>();
@@ -45,12 +15,6 @@ public class AdjacencyMatrixGraph<T> implements Graph<T> {
         this.directed = directed;
     }
 
-    /**
-     * Adds a node to the graph.
-     *
-     * @param node The node to be added.
-     * @return True if the node is added, false otherwise.
-     */
     @Override
     public boolean addNode(T node) {
         boolean flag = false;
@@ -63,10 +27,7 @@ public class AdjacencyMatrixGraph<T> implements Graph<T> {
         return flag;
     }
 
-    /**
-     * Adds one column and row to the dynamic matrix.
-     */
-    public void addOneColumnAndRow() {
+    private void addOneColumnAndRow() {
         int initialCapacity = dynamicMatrix.size();
         dynamicMatrix.add(new ArrayList<>(initialCapacity));
 
@@ -79,14 +40,6 @@ public class AdjacencyMatrixGraph<T> implements Graph<T> {
         }
     }
 
-    /**
-     * Adds an edge between two nodes with an optional weight.
-     *
-     * @param node1  The first node.
-     * @param node2  The second node.
-     * @param weight The weight of the edge.
-     * @return True if the edge is added, false otherwise.
-     */
     @Override
     public boolean addEdge(T node1, T node2, int weight) {
         boolean flag = false;
@@ -119,13 +72,6 @@ public class AdjacencyMatrixGraph<T> implements Graph<T> {
         return flag;
     }
 
-    /**
-     * Checks if node1 influences node2 directly.
-     *
-     * @param node1 The first node.
-     * @param node2 The second node.
-     * @return True if node1 influences node2 directly, false otherwise.
-     */
     @Override
     public boolean nodeInfluenceDirectly(T node1, T node2) {
         boolean flag = false;
@@ -143,13 +89,6 @@ public class AdjacencyMatrixGraph<T> implements Graph<T> {
         return flag;
     }
 
-    /**
-     * Gets the weight of the edge between two nodes.
-     *
-     * @param node1 The first node.
-     * @param node2 The second node.
-     * @return The weight of the edge, or -1 for non-existent or unconnected nodes.
-     */
     @Override
     public int getWeight(T node1, T node2) {
         if (map.containsKey(node1) && map.containsKey(node2)) {
@@ -157,15 +96,9 @@ public class AdjacencyMatrixGraph<T> implements Graph<T> {
             int columnOfNode2 = map.get(node2);
             return dynamicMatrix.get(rowOfNode1).get(columnOfNode2);
         }
-        return -1;
+        return -1; // Return -1 for non-existent or unconnected nodes.
     }
 
-    /**
-     * Gets the neighbors of a given node.
-     *
-     * @param node The node.
-     * @return The list of neighbors of the node.
-     */
     @Override
     public List<T> getNeighbors(T node) {
         List<T> neighbors = new ArrayList<>();
@@ -182,11 +115,6 @@ public class AdjacencyMatrixGraph<T> implements Graph<T> {
         return neighbors;
     }
 
-    /**
-     * Returns a string representation of the adjacency matrix.
-     *
-     * @return The string representation of the adjacency matrix.
-     */
     @Override
     public String toString() {
         int size = dynamicMatrix.size();
@@ -220,39 +148,90 @@ public class AdjacencyMatrixGraph<T> implements Graph<T> {
         return msg.toString();
     }
 
-    /**
-     * Checks if the graph is weighted.
-     *
-     * @return True if the graph is weighted, false otherwise.
-     */
     @Override
     public boolean isWeighted() {
         return weighted;
     }
 
-    /**
-     * Checks if the graph is directed.
-     *
-     * @return True if the graph is directed, false otherwise.
-     */
     @Override
     public boolean isDirected() {
         return directed;
     }
 
-    /**
-     * Finds the shortest path between two nodes.
-     *
-     * @param origin      The starting node.
-     * @param destination The destination node.
-     * @return The shortest path as a list of nodes.
-     */
     @Override
     public List<T> getShortestPath(T origin, T destination) {
-        ArrayList<T> shortestPath = new ArrayList<>();
-        return null; // Implementation omitted for brevity
+        List<T> shortestPath = new ArrayList<>();
+        return bfs(origin, destination);
     }
+
+    private List<T> bfs(T origin, T destination) {
+        Set<T> visited = new HashSet<>();
+        Queue<T> queue = new LinkedList<>();
+        queue.add(origin);
+        visited.add(origin);
+        T current;
+        // Map where the key is a node in the path and the value is the node it comes from
+        Map<T, T> mapOfPrevs = new HashMap<>();
+        boolean pathWasFound = false;
+        List<T> path = new ArrayList<>();
+
+        while (!queue.isEmpty() && !pathWasFound) {
+            current = queue.poll();
+            int currentIndex = map.get(current);
+
+            // Iterate over neighbors using the adjacency matrix
+            for (int i = 0; i < dynamicMatrix.size(); i++) {
+                if (dynamicMatrix.get(currentIndex).get(i) > 0) {
+                    T neighbor = getKeyByValue(map, i);
+
+                    if (!visited.contains(neighbor)) {
+                        // We reached the neighbor through the current node
+                        mapOfPrevs.put(neighbor, current);
+                        queue.add(neighbor);
+                        visited.add(neighbor);
+                    }
+                }
+            }
+
+            if (visited.contains(destination)) {
+                pathWasFound = true;
+            }
+        }
+
+        if (pathWasFound) {
+            System.out.println("EUREKA");
+            path = buildPath(origin, destination, mapOfPrevs);
+        }
+
+        return path;
+    }
+
+    private List<T> buildPath(T origin, T destination, Map<T, T> mapOfPrevs) {
+        List<T> list = new ArrayList<>();
+
+        T current = destination;
+        while (current != origin) {
+            list.add(current);
+            current = mapOfPrevs.get(current);
+        }
+        Collections.reverse(list);
+        return list;
+    }
+
+    private T getKeyByValue(Map<T, Integer> map, int value) {
+        for (Map.Entry<T, Integer> entry : map.entrySet()) {
+            if (entry.getValue() == value) {
+                return entry.getKey();
+            }
+        }
+        return null;
+    }
+
+
+
 }
+
+
 
 
 

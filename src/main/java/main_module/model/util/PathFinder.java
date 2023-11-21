@@ -1,45 +1,55 @@
 package main_module.model.util;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-/**
- * The {@code PathFinder} class is responsible for finding the shortest path between two matrix coordinates in a graph.
- * It supports both adjacency matrix and adjacency list representations of the graph, as well as directed and undirected graph configurations.
- */
 public class PathFinder {
-    /**
-     * Constructs a {@code PathFinder}.
-     */
     public PathFinder() {
     }
 
-    /**
-     * Retrieves the shortest path between the specified origin and destination matrix coordinates in the given graph.
-     *
-     * @param origin      The starting matrix coordinate.
-     * @param destination The destination matrix coordinate.
-     * @param map         The 2D array representing the graph.
-     * @param adjacencyList If {@code true}, the graph is represented using an adjacency list.
-     *                     If {@code false}, it is represented using an adjacency matrix.
-     * @param directed      If {@code true}, the graph is directed.
-     *                      If {@code false}, it is undirected.
-     * @return The list of matrix coordinates representing the shortest path from the origin to the destination.
-     */
     public List<MatrixCor> getShortestPath(MatrixCor origin, MatrixCor destination, int map[][], boolean adjacencyList, boolean directed) {
         List<MatrixCor> path = new ArrayList<>();
         Graph<MatrixCor> graph;
-
-        // Initialize the graph based on the parameters
         if (adjacencyList) {
             graph = new AdjacencyListGraph<>(false, directed);
         } else {
             graph = new AdjacencyMatrixGraph<>(false, directed);
         }
+        for(int i=0;i< map.length;i++){
+            for(int j=0;j< map[0].length;j++){
+                if(map[i][j]==0){
+                    //se añaden los nodos en los espacios en donde no hayan
+                    //obstaculos
+                    graph.addNode(new MatrixCor(i,j));
+                }
+            }
+        }
+        for(int i=0;i< map.length;i++){
+            for(int j=0;j< map[0].length;j++){
+                if(map[i][j]==0){
+                    //se añaden las aristas
+                    addEdges(i,j,graph);
+                }
+            }
+        }
 
-        // Build the graph based on the provided map
-        // and then calculate the shortest path
+
+        //construya el grafo con base al mapa
+        //y luego calcule el camino m´as corto
         return graph.getShortestPath(origin, destination);
     }
-}
+    public void addEdges(int row, int col, Graph<MatrixCor> graph) {
+        MatrixCor current = new MatrixCor(row, col);
+        MatrixCor left = new MatrixCor(row, col - 1);
+        MatrixCor right = new MatrixCor(row, col + 1);
+        MatrixCor up = new MatrixCor(row - 1, col);
+        MatrixCor down = new MatrixCor(row + 1, col);
+        List<MatrixCor> list = Arrays.asList(left, right, up, down);
+        for (MatrixCor neighbor : list) {
+            boolean flag = graph.addEdge(current, neighbor, 1);
+            // No need for additional validation here; the method will not add the edge if the node doesn't exist.
+        }
+    }
 
+}
