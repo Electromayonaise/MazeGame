@@ -35,7 +35,7 @@ public class Ia {
      * @param player                           The player character in the game.
      */
     public void update(int[][] nonDestroyableTilesRepresentation, int[][] destroyableTilesRepresentation, Player player,boolean adjacency, boolean directed) {
-        logic(nonDestroyableTilesRepresentation, destroyableTilesRepresentation, player);
+       // logic(nonDestroyableTilesRepresentation, destroyableTilesRepresentation, player);
         logic2(nonDestroyableTilesRepresentation, destroyableTilesRepresentation, player,adjacency,directed);
     }
 
@@ -72,7 +72,7 @@ public class Ia {
      * @return True if the player is visible, false otherwise.
      */
     public boolean isPlayerVisible(Player player, int[][] nonDestroyableTilesRepresentation, int[][] destroyableTilesRepresentation) {
-        Vector enemyPos = enemy.getMiddlePoint();
+        Vector enemyPos = enemy.getPos();
         Vector playerPos = player.getMiddlePoint();
 
         int enemyCol = (int) (enemyPos.getX() / Tile.SIZE);
@@ -175,7 +175,7 @@ public class Ia {
     public void logic2(int[][] nonDestroyableTilesRepresentation, int[][] destroyableTilesRepresentation, Player player,boolean adjacency, boolean directed) {
 
         Set<Direction> directionsToGo = enemy.getDirectionsToGo();
-       // directionsToGo.clear();
+        directionsToGo.clear();
 
         Vector playerPosInVector= BaseScreen.fromVectorToMatrixCoordinate(player.getMiddlePoint());
         Vector enemyPosInVector= BaseScreen.fromVectorToMatrixCoordinate(enemy.getMiddlePoint());
@@ -183,9 +183,41 @@ public class Ia {
         MatrixCor playerPosInMatrixCor=new MatrixCor((int)playerPosInVector.getY(), (int)playerPosInVector.getX());
         MatrixCor enemyPosInMatrixCor=new MatrixCor((int) enemyPosInVector.getY(),(int)enemyPosInVector.getX());
         List<MatrixCor> path=new ArrayList<>();
-       path=pathFinder.getShortestPath(playerPosInMatrixCor,enemyPosInMatrixCor,nonDestroyableTilesRepresentation,adjacency,directed);
-        System.out.println("path"+path);
+       path=pathFinder.getShortestPath(enemyPosInMatrixCor,playerPosInMatrixCor,nonDestroyableTilesRepresentation,adjacency,directed);
+       System.out.println(path);
+       Direction direction=getNextDirectionToGoAccordingToPath(path,enemyPosInMatrixCor);
+        directionsToGo.add(direction);
+    }
 
-      //  directionsToGo.add(currentInertia);
+    public Direction getNextDirectionToGoAccordingToPath(List<MatrixCor> path, MatrixCor enemyPosInMatrix){
+        if(path.isEmpty()){
+            return Direction.NONE;
+        }
+        MatrixCor nextCell=path.get(0);
+        if(enemyPosInMatrix.getRow()==nextCell.getRow()){
+            if(enemyPosInMatrix.getCol()<nextCell.getCol()){
+                return Direction.RIGHT;
+            }
+
+            if(enemyPosInMatrix.getCol()>nextCell.getCol()){
+                return Direction.LEFT;
+            }
+        }
+
+
+        if(enemyPosInMatrix.getCol()==nextCell.getCol()){
+
+            if(enemyPosInMatrix.getRow()<nextCell.getRow()){
+                return Direction.DOWN;
+            }
+
+            if(enemyPosInMatrix.getRow()>nextCell.getRow()){
+                return Direction.UP;
+            }
+
+
+        }
+        return Direction.NONE;
+
     }
 }

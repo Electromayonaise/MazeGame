@@ -96,7 +96,7 @@ public class Controller implements Initializable {
      * Initializes the user input actions.
      */
     public void initActions() {
-        screenA = new ScreenA(canvas,true,false);
+        screenA = new ScreenA(canvas,false,false);
 
         canvas.setOnKeyReleased(event -> {
             screenA.setOnKeyReleased(event);
