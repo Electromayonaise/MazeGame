@@ -1,19 +1,20 @@
 package main_module.model.entities;
 
+import main_module.BaseScreen;
 import main_module.model.enums.Direction;
+import main_module.model.util.MatrixCor;
+import main_module.model.util.PathFinder;
 import main_module.model.util.Vector;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Represents the artificial intelligence (AI) logic for controlling an enemy character in the game.
  */
 public class Ia {
     public Enemy enemy;
-    Direction currentInertia;
+    private Direction currentInertia;
+    private PathFinder pathFinder;
 
     /**
      * Creates a new instance of the Ia class.
@@ -23,6 +24,7 @@ public class Ia {
     public Ia(Enemy enemy) {
         this.enemy = enemy;
         currentInertia = Direction.RIGHT;
+        this.pathFinder=new PathFinder();
     }
 
     /**
@@ -32,8 +34,9 @@ public class Ia {
      * @param destroyableTilesRepresentation    The representation of destroyable tiles in the game.
      * @param player                           The player character in the game.
      */
-    public void update(int[][] nonDestroyableTilesRepresentation, int[][] destroyableTilesRepresentation, Player player) {
+    public void update(int[][] nonDestroyableTilesRepresentation, int[][] destroyableTilesRepresentation, Player player,boolean adjacency, boolean directed) {
         logic(nonDestroyableTilesRepresentation, destroyableTilesRepresentation, player);
+        logic2(nonDestroyableTilesRepresentation, destroyableTilesRepresentation, player,adjacency,directed);
     }
 
     /**
@@ -57,6 +60,9 @@ public class Ia {
         directionsToGo.add(currentInertia);
     }
 
+
+
+
     /**
      * Checks if the player is visible to the enemy.
      *
@@ -66,8 +72,8 @@ public class Ia {
      * @return True if the player is visible, false otherwise.
      */
     public boolean isPlayerVisible(Player player, int[][] nonDestroyableTilesRepresentation, int[][] destroyableTilesRepresentation) {
-        Vector enemyPos = enemy.getPos();
-        Vector playerPos = player.getPos();
+        Vector enemyPos = enemy.getMiddlePoint();
+        Vector playerPos = player.getMiddlePoint();
 
         int enemyCol = (int) (enemyPos.getX() / Tile.SIZE);
         int enemyRow = (int) (enemyPos.getY() / Tile.SIZE);
@@ -162,5 +168,24 @@ public class Ia {
         }
 
         return newInertia;
+    }
+
+
+
+    public void logic2(int[][] nonDestroyableTilesRepresentation, int[][] destroyableTilesRepresentation, Player player,boolean adjacency, boolean directed) {
+
+        Set<Direction> directionsToGo = enemy.getDirectionsToGo();
+       // directionsToGo.clear();
+
+        Vector playerPosInVector= BaseScreen.fromVectorToMatrixCoordinate(player.getMiddlePoint());
+        Vector enemyPosInVector= BaseScreen.fromVectorToMatrixCoordinate(enemy.getMiddlePoint());
+
+        MatrixCor playerPosInMatrixCor=new MatrixCor((int)playerPosInVector.getY(), (int)playerPosInVector.getX());
+        MatrixCor enemyPosInMatrixCor=new MatrixCor((int) enemyPosInVector.getY(),(int)enemyPosInVector.getX());
+        List<MatrixCor> path=new ArrayList<>();
+       path=pathFinder.getShortestPath(playerPosInMatrixCor,enemyPosInMatrixCor,nonDestroyableTilesRepresentation,adjacency,directed);
+        System.out.println("path"+path);
+
+      //  directionsToGo.add(currentInertia);
     }
 }

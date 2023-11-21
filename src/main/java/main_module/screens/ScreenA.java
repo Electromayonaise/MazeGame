@@ -21,17 +21,20 @@ public class ScreenA extends BaseScreen {
     private final double INITIAL_PLAYER_POS_Y = 65;
     private final int INITIAL_PLAYER_HP = 5;
 
-    private final int MAX_ROW = 47;
-    private final int MAX_COL = 47;
+    private final int MAX_ROW = 21;
+    private final int MAX_COL = 21;
+
+    private boolean adjacencyList;
+
+    private boolean directed;
 
     /**
      * Creates a new instance of the ScreenA class.
      *
      * @param canvas The canvas where the game screen is drawn.
      */
-    public ScreenA(Canvas canvas) {
-        super(canvas);
-
+    public ScreenA(Canvas canvas,boolean adjacencyList,boolean directed) {
+        super(canvas,adjacencyList,directed);
         Vector pos = new Vector(INITIAL_PLAYER_POS_X, INITIAL_PLAYER_POS_Y);
         this.player = new Player(pos, INITIAL_PLAYER_HP, bombManager);
         tileManager = new TileManager();
@@ -66,7 +69,7 @@ public class ScreenA extends BaseScreen {
      */
     public int[][] initNonDestroyableTilesRepresentation() {
         MapGenerator mapGenerator = new MapGenerator();
-        int[][] generatedMap = mapGenerator.generateMap(MAX_ROW - 2, MAX_COL - 2, true, true);
+        int[][] generatedMap = mapGenerator.generateMap(MAX_ROW - 2, MAX_COL - 2, adjacencyList, directed);
         return generatedMap;
     }
 
@@ -143,7 +146,7 @@ public class ScreenA extends BaseScreen {
                     // Allow enemies only in odd coordinates (except position (1,1) && (1, 3) && (3, 1))
                     if (i % 2 != 0 && j % 2 != 0 && !((i == 1 && j == 1) || (i == 1 && j == 3) || (i == 3 && j == 1))) {
                         // Random to decide if there is an enemy (1 or 0) according to a probability
-                        double probability = 0.1; // 30% chance of having an enemy
+                        double probability = 0.05; // 30% chance of having an enemy
                         enemyMatrix[i][j] = (random.nextDouble() < probability) ? 1 : 0;
                     } else {
                         enemyMatrix[i][j] = 0;

@@ -80,7 +80,9 @@ public abstract class BaseScreen {
 
     public abstract int[][] initNonDestroyableTilesRepresentation();
 
-    protected BaseScreen(Canvas canvas) {
+    protected boolean adjacency;
+    protected boolean directed;
+    protected BaseScreen(Canvas canvas,boolean adjacency,boolean directed) {
         this.canvas = canvas;
         gc = canvas.getGraphicsContext2D();
         tileManager = new TileManager();
@@ -88,6 +90,8 @@ public abstract class BaseScreen {
         bombManager = new BombManager(this);
         damageManager = new DamageManager(this);
         enemyManager = new EnemyManager();
+        this.adjacency=adjacency;
+        this.directed=directed;
     }
 
     //------------updates-----*/
@@ -106,7 +110,7 @@ public abstract class BaseScreen {
     public void updateEnemies() {
         for (Entity ent : enemyList) {
             Enemy enemy = (Enemy) ent;
-            enemy.update(nonDestroyableTilesRepresentation, destroyableTilesRepresentation, player);
+            enemy.update(nonDestroyableTilesRepresentation, destroyableTilesRepresentation, player,adjacency,directed);
         }
     }
 
@@ -352,7 +356,7 @@ public abstract class BaseScreen {
         return new Vector(x, y);
     }
 
-    public Vector fromVectorToMatrixCoordinate(Vector vector) {
+    public static Vector fromVectorToMatrixCoordinate(Vector vector) {
         double x = vector.getX();
         double y = vector.getY();
         double matrixX = Math.floor(x / Tile.SIZE);

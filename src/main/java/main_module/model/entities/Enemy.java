@@ -45,8 +45,8 @@ public class Enemy extends Character implements ICollide {
      * @param destroyableTilesRepresentation    The representation of destroyable tiles in the game.
      * @param player                           The player character in the game.
      */
-    public void update(int[][] nonDestroyableTilesRepresentation, int[][] destroyableTilesRepresentation, Player player) {
-        ia.update(nonDestroyableTilesRepresentation, destroyableTilesRepresentation, player);
+    public void update(int[][] nonDestroyableTilesRepresentation, int[][] destroyableTilesRepresentation, Player player,boolean adjacency,boolean directed) {
+        ia.update(nonDestroyableTilesRepresentation, destroyableTilesRepresentation, player,adjacency,directed);
         onMove(this.collisionDirectionSet);
         collisionDirectionSet.clear();
         processSideEffects();
