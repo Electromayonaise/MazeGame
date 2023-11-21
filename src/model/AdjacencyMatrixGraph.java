@@ -1,10 +1,6 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class AdjacencyMatrixGraph<T> implements Graph<T> {
     private ArrayList<ArrayList<Integer>> dynamicMatrix;
@@ -164,33 +160,55 @@ public class AdjacencyMatrixGraph<T> implements Graph<T> {
     }
 
     @Override
-
     public List<T> getShortestPath(T origin, T destination) {
-        ArrayList<T> shortestPath = new ArrayList<>();
-        return null;
-    }
-    private void floydWarshall(){
-        LinkedHashMap<T,Integer> copy=(LinkedHashMap<T, Integer>) map.clone();
 
-        for(Map.Entry<T,Integer> entry:map.entrySet()){
-            int intermediateNode=entry.getValue();
-            for(Map.Entry<T,Integer> entry2: map.entrySet()){
-                int initialNode=entry2.getValue();
+        floydWarshall();
+        int originIndex = map.get(origin);
+        int destinationIndex = map.get(destination);
 
-                for(Map.Entry<T,Integer>entry3: map.entrySet()){
-                    int finalNode= entry.getValue();
-
-
-                }
-
-
-            }
-
-
+        if (dynamicMatrix.get(originIndex).get(destinationIndex) == 0) {
+            // No path exists
+            return Collections.emptyList();
         }
 
+        List<T> shortestPath = new ArrayList<>();
+        shortestPath.add(origin);
 
+        while (!origin.equals(destination)) {
+            originIndex = map.get(origin);
+            destinationIndex = map.get(destination);
+            destination = getKeyByValue(map, dynamicMatrix.get(originIndex).get(destinationIndex));
+            shortestPath.add(destination);
+        }
+
+        return shortestPath;
     }
+
+    private T getKeyByValue(Map<T, Integer> map, int value) {
+        for (Map.Entry<T, Integer> entry : map.entrySet()) {
+            if (entry.getValue().equals(value)) {
+                return entry.getKey();
+            }
+        }
+        return null;
+    }
+
+    private void floydWarshall() {
+        int size = dynamicMatrix.size();
+
+        for (int k = 0; k < size; k++) {
+            for (int i = 0; i < size; i++) {
+                for (int j = 0; j < size; j++) {
+                    int directPath = dynamicMatrix.get(i).get(j);
+                    int throughK = dynamicMatrix.get(i).get(k) + dynamicMatrix.get(k).get(j);
+                    if (throughK < directPath) {
+                        dynamicMatrix.get(i).set(j, throughK);
+                    }
+                }
+            }
+        }
+    }
+
 
 
 }
