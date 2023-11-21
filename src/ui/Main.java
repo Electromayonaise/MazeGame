@@ -2,6 +2,7 @@ package ui;
 
 import model.*;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -20,20 +21,31 @@ public class Main {
       //  main.menu();
        // System.out.println("Bye");
     }
-    public static void test(){
-        //MazeGenerator mazeGenerator=new MazeGenerator();
-       // Graph< MatrixCor> maze= mazeGenerator.generateMaze(5,5,true,false);
-        MapGenerator mapGenerator=new MapGenerator();
-        PathFinder pathFinder=new PathFinder();
-        int[][] map= mapGenerator.generateMap(21,21,true,true);
+    public static void test() {
+        MapGenerator mapGenerator = new MapGenerator();
+        PathFinder pathFinder = new PathFinder();
 
-        MatrixCor origin=new MatrixCor(1,1);
-        MatrixCor destination=new MatrixCor(21,21);
+        // Generate a map
+        int[][] map = mapGenerator.generateMap(21, 21, false, true);
 
-        List<MatrixCor> path=pathFinder.getShortestPath(origin,destination,map,true,true);
+        // Display the generated map (optional)
+        System.out.println("Generated Map:");
+        for (int[] row : map) {
+            System.out.println(Arrays.toString(row));
+        }
+
+        // Define origin and destination nodes
+        MatrixCor origin = new MatrixCor(1, 1);
+        MatrixCor destination = new MatrixCor(21, 21);
+
+        // Get the shortest path
+        List<MatrixCor> path = pathFinder.getShortestPath(origin, destination, map, false, true);
+
+        // Display the generated path (optional)
+        System.out.println("Shortest Path:");
         System.out.println(path);
-
     }
+
 
     public void chooseGraphType() {
         int choice;

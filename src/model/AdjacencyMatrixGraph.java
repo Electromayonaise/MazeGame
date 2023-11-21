@@ -161,52 +161,71 @@ public class AdjacencyMatrixGraph<T> implements Graph<T> {
 
     @Override
     public List<T> getShortestPath(T origin, T destination) {
-
-        floydWarshall();
-        int originIndex = map.get(origin);
-        int destinationIndex = map.get(destination);
-
-        if (dynamicMatrix.get(originIndex).get(destinationIndex) == 0) {
-            // No path exists
-            return Collections.emptyList();
-        }
-
         List<T> shortestPath = new ArrayList<>();
-        shortestPath.add(origin);
+        return bfs(origin, destination);
+    }
 
-        while (!origin.equals(destination)) {
-            originIndex = map.get(origin);
-            destinationIndex = map.get(destination);
-            destination = getKeyByValue(map, dynamicMatrix.get(originIndex).get(destinationIndex));
-            shortestPath.add(destination);
+    private List<T> bfs(T origin, T destination) {
+        Set<T> visited = new HashSet<>();
+        Queue<T> queue = new LinkedList<>();
+        queue.add(origin);
+        visited.add(origin);
+        T current;
+        // Map where the key is a node in the path and the value is the node it comes from
+        Map<T, T> mapOfPrevs = new HashMap<>();
+        boolean pathWasFound = false;
+        List<T> path = new ArrayList<>();
+
+        while (!queue.isEmpty() && !pathWasFound) {
+            current = queue.poll();
+            int currentIndex = map.get(current);
+
+            // Iterate over neighbors using the adjacency matrix
+            for (int i = 0; i < dynamicMatrix.size(); i++) {
+                if (dynamicMatrix.get(currentIndex).get(i) > 0) {
+                    T neighbor = getKeyByValue(map, i);
+
+                    if (!visited.contains(neighbor)) {
+                        // We reached the neighbor through the current node
+                        mapOfPrevs.put(neighbor, current);
+                        queue.add(neighbor);
+                        visited.add(neighbor);
+                    }
+                }
+            }
+
+            if (visited.contains(destination)) {
+                pathWasFound = true;
+            }
         }
 
-        return shortestPath;
+        if (pathWasFound) {
+            System.out.println("EUREKA");
+            path = buildPath(origin, destination, mapOfPrevs);
+        }
+
+        return path;
+    }
+
+    private List<T> buildPath(T origin, T destination, Map<T, T> mapOfPrevs) {
+        List<T> list = new ArrayList<>();
+
+        T current = destination;
+        while (current != origin) {
+            list.add(current);
+            current = mapOfPrevs.get(current);
+        }
+        Collections.reverse(list);
+        return list;
     }
 
     private T getKeyByValue(Map<T, Integer> map, int value) {
         for (Map.Entry<T, Integer> entry : map.entrySet()) {
-            if (entry.getValue().equals(value)) {
+            if (entry.getValue() == value) {
                 return entry.getKey();
             }
         }
         return null;
-    }
-
-    private void floydWarshall() {
-        int size = dynamicMatrix.size();
-
-        for (int k = 0; k < size; k++) {
-            for (int i = 0; i < size; i++) {
-                for (int j = 0; j < size; j++) {
-                    int directPath = dynamicMatrix.get(i).get(j);
-                    int throughK = dynamicMatrix.get(i).get(k) + dynamicMatrix.get(k).get(j);
-                    if (throughK < directPath) {
-                        dynamicMatrix.get(i).set(j, throughK);
-                    }
-                }
-            }
-        }
     }
 
 

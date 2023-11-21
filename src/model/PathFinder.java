@@ -39,21 +39,17 @@ public class PathFinder {
         //y luego calcule el camino m´as corto
         return graph.getShortestPath(origin, destination);
     }
-    public void addEdges(int row,int col,Graph<MatrixCor> graph){
-        MatrixCor current=new MatrixCor(row,col);
-        MatrixCor left=new MatrixCor(row,col-1);
-        MatrixCor right= new MatrixCor(row,col+1);
-        MatrixCor up=new MatrixCor(row-1,col);
-        MatrixCor down=new MatrixCor(row+1,col);
-        List<MatrixCor> list= Arrays.asList(left,right,up,down,up);
-        for(MatrixCor neighbor: list){
-            boolean flag=graph.addEdge(current,neighbor,1);
-            //aquí no hay que hacen ninguna validación
-            //porque si el nodo no existe, el metodo no lo añade y ya
-
+    public void addEdges(int row, int col, Graph<MatrixCor> graph) {
+        MatrixCor current = new MatrixCor(row, col);
+        MatrixCor left = new MatrixCor(row, col - 1);
+        MatrixCor right = new MatrixCor(row, col + 1);
+        MatrixCor up = new MatrixCor(row - 1, col);
+        MatrixCor down = new MatrixCor(row + 1, col);
+        List<MatrixCor> list = Arrays.asList(left, right, up, down);
+        for (MatrixCor neighbor : list) {
+            boolean flag = graph.addEdge(current, neighbor, 1);
+            // No need for additional validation here; the method will not add the edge if the node doesn't exist.
         }
-
-
     }
 
 }
