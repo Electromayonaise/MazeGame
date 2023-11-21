@@ -47,7 +47,7 @@ public class MapGenerator {
         }
 
 
-        return map;
+        return mapWithBorders;
     }
 
     public int[][] dfs(Graph<MatrixCor> graph, MatrixCor current, boolean[][] visited, int[][] map) {

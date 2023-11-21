@@ -32,7 +32,7 @@ public class AdjacencyMatrixGraph<T> implements Graph<T> {
         return flag;
     }
 
-    public void addOneColumnAndRow() {
+    private void addOneColumnAndRow() {
         int initialCapacity = dynamicMatrix.size();
         dynamicMatrix.add(new ArrayList<>(initialCapacity));
 
@@ -168,6 +168,28 @@ public class AdjacencyMatrixGraph<T> implements Graph<T> {
     public List<T> getShortestPath(T origin, T destination) {
         ArrayList<T> shortestPath = new ArrayList<>();
         return null;
+    }
+    private void floydWarshall(){
+        LinkedHashMap<T,Integer> copy=(LinkedHashMap<T, Integer>) map.clone();
+
+        for(Map.Entry<T,Integer> entry:map.entrySet()){
+            int intermediateNode=entry.getValue();
+            for(Map.Entry<T,Integer> entry2: map.entrySet()){
+                int initialNode=entry2.getValue();
+
+                for(Map.Entry<T,Integer>entry3: map.entrySet()){
+                    int finalNode= entry.getValue();
+
+
+                }
+
+
+            }
+
+
+        }
+
+
     }
 
 

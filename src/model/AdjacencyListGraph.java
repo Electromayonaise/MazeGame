@@ -110,19 +110,22 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     @Override
     public List<T> getShortestPath(T origin, T destination) {
         List<T> shortestPath = new ArrayList<>();
-        return shortestPath;
+        return bfs(origin, destination);
     }
 
-    public List<T> bfs(T origin, T destination, HashSet<T> visited) {
+    private List<T> bfs(T origin, T destination) {
+        Set<T>visited=new HashSet<>();
         Queue<T> queue = new LinkedList<>();
         queue.add(origin);
         visited.add(origin);
         T current;
         //la key es un nodo de la ruta y el value el nodo del que provengo
         Map<T, T> mapOfPrevs = new HashMap<>();
+        boolean pathWasFound=false;
+        List<T> path=new ArrayList<>();
 
 
-        while (!queue.isEmpty()) {
+        while (!queue.isEmpty() &&!pathWasFound) {
             current = queue.poll();
             List<T> neighbors = getNeighbors(current);
             for (T neighbor : neighbors) {
@@ -132,19 +135,23 @@ public class AdjacencyListGraph<T> implements Graph<T> {
                     queue.add(neighbor);
                     visited.add(neighbor);
                 }
-                if (visited.contains(destination)) {
-                    break;
-                }
+            }
+            if (visited.contains(destination)) {
+                pathWasFound=true;
             }
         }
+        if(pathWasFound){
+            System.out.println("EUREKA");
+            path=buildPath(origin,destination,mapOfPrevs);
+        }
 
-        List<T> path=buildPath(origin,destination,mapOfPrevs);
         return path;
 
     }
 
     private List<T> buildPath(T origin, T destination, Map<T, T> mapOfPrevs) {
         List<T> list = new ArrayList<>();
+
         T current = destination;
         while (current !=origin){
             list.add(current);

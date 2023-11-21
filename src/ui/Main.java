@@ -2,6 +2,7 @@ package ui;
 
 import model.*;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -23,8 +24,14 @@ public class Main {
         //MazeGenerator mazeGenerator=new MazeGenerator();
        // Graph< MatrixCor> maze= mazeGenerator.generateMaze(5,5,true,false);
         MapGenerator mapGenerator=new MapGenerator();
-        int[][] map= mapGenerator.generateMap(7,7,true,true);
-       // System.out.println(map);
+        PathFinder pathFinder=new PathFinder();
+        int[][] map= mapGenerator.generateMap(21,21,true,true);
+
+        MatrixCor origin=new MatrixCor(1,1);
+        MatrixCor destination=new MatrixCor(21,21);
+
+        List<MatrixCor> path=pathFinder.getShortestPath(origin,destination,map,true,true);
+        System.out.println(path);
 
     }
 
