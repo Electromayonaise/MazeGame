@@ -72,7 +72,10 @@ public class DamageManager {
             for (int dy : cellsToCheckY) {
                 int newCol = col + dx;
                 int newRow = row + dy;
-                addBombDamage(newCol, newRow);
+                if(screen.getNonDestroyableTiles()[newRow][newCol]==null){
+                    addBombDamage(newCol, newRow);
+                }
+
             }
         }
         // Verticals -> up and down
@@ -80,7 +83,9 @@ public class DamageManager {
             for (int dx : cellsToCheckY) {
                 int newCol = col + dx;
                 int newRow = row + dy;
-                addBombDamage(newCol, newRow);
+                if(screen.getNonDestroyableTiles()[newRow][newCol]==null){
+                    addBombDamage(newCol, newRow);
+                }
             }
         }
     }

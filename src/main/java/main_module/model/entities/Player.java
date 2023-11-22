@@ -18,8 +18,8 @@ public class Player extends Character {
     private boolean leftPressed;
     private boolean rightPressed;
     private boolean cPressed;
-    public static final double speedX=5;
-    public static final double speedY=5;
+    public static final double speedX = 5;
+    public static final double speedY = 5;
 
     private BombManager bombManager;
 
@@ -104,39 +104,39 @@ public class Player extends Character {
         int directionIndex = -1;
 
         if (upPressed) {
-                if (!collidingSet.contains(Direction.UP)) {
-                    pos.setY(pos.getY() - speedY);
-                    directionIndex = 0; // UP
-                }
+            if (!collidingSet.contains(Direction.UP)) {
+                pos.setY(pos.getY() - speedY);
+                directionIndex = 0; // UP
+            }
         } else if (downPressed) {
-                if (!collidingSet.contains(Direction.DOWN)) {
-                    pos.setY(pos.getY() + speedY);
-                    directionIndex = 1; // DOWN
-                }
-            } else if (leftPressed) {
-                if (!collidingSet.contains(Direction.LEFT)) {
-                    pos.setX(pos.getX() - speedX);
-                    directionIndex = 2; // LEFT
-                }
-            } else if (rightPressed) {
-                if (!collidingSet.contains(Direction.RIGHT)) {
-                    pos.setX(pos.getX() + speedX);
-                    directionIndex = 3; // RIGHT
-                }
-            } else {
-                directionIndex = -1; // No movement
+            if (!collidingSet.contains(Direction.DOWN)) {
+                pos.setY(pos.getY() + speedY);
+                directionIndex = 1; // DOWN
             }
+        }
+        if (leftPressed) {
+            if (!collidingSet.contains(Direction.LEFT)) {
+                pos.setX(pos.getX() - speedX);
+                directionIndex = 2; // LEFT
+            }
+        } else if (rightPressed) {
+            if (!collidingSet.contains(Direction.RIGHT)) {
+                pos.setX(pos.getX() + speedX);
+                directionIndex = 3; // RIGHT
+            }
+        }
 
-            if (directionIndex != -1) {
-                if (frameCounter % FRAME_DELAY == 0) {
-                    frame = (frame + 1) % 4; // Change frame (0-3)
-                    currentImage = playerMovement[directionIndex][frame];
-                }
-                frameCounter++;
-            } else {
-                frameCounter = 0; // Reset the counter if there is no movement
-                currentImage = new Image(getClass().getResource("/main_module/animations/player/standardPos.png").toString(), false);
+
+        if (directionIndex != -1) {
+            if (frameCounter % FRAME_DELAY == 0) {
+                frame = (frame + 1) % 4; // Change frame (0-3)
+                currentImage = playerMovement[directionIndex][frame];
             }
+            frameCounter++;
+        } else {
+            frameCounter = 0; // Reset the counter if there is no movement
+            currentImage = new Image(getClass().getResource("/main_module/animations/player/standardPos.png").toString(), false);
+        }
     }
 
     /**
@@ -262,7 +262,7 @@ public class Player extends Character {
         this.bombsIncreased = bombsIncreased;
     }
 
-    public void setEndGameImage(){
+    public void setEndGameImage() {
         this.currentImage = new Image(getClass().getResource("/main_module/animations/player/EndGame.png").toString(), false);
     }
 }

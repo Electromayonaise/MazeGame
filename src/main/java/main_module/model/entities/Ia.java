@@ -24,7 +24,7 @@ public class Ia {
     public Ia(Enemy enemy) {
         this.enemy = enemy;
         currentInertia = Direction.RIGHT;
-        this.pathFinder=new PathFinder();
+        this.pathFinder = new PathFinder();
     }
 
     /**
@@ -32,11 +32,11 @@ public class Ia {
      *
      * @param nonDestroyableTilesRepresentation The representation of non-destroyable tiles in the game.
      * @param destroyableTilesRepresentation    The representation of destroyable tiles in the game.
-     * @param player                           The player character in the game.
+     * @param player                            The player character in the game.
      */
-    public void update(int[][] nonDestroyableTilesRepresentation, int[][] destroyableTilesRepresentation, Player player,boolean adjacency, boolean directed) {
-       // logic(nonDestroyableTilesRepresentation, destroyableTilesRepresentation, player);
-        logic2(nonDestroyableTilesRepresentation, destroyableTilesRepresentation, player,adjacency,directed);
+    public void update(int[][] nonDestroyableTilesRepresentation, int[][] destroyableTilesRepresentation, Player player, boolean adjacency, boolean directed) {
+        // logic(nonDestroyableTilesRepresentation, destroyableTilesRepresentation, player);
+        logic2(nonDestroyableTilesRepresentation, destroyableTilesRepresentation, player, adjacency, directed);
     }
 
     /**
@@ -44,7 +44,7 @@ public class Ia {
      *
      * @param nonDestroyableTilesRepresentation The representation of non-destroyable tiles in the game.
      * @param destroyableTilesRepresentation    The representation of destroyable tiles in the game.
-     * @param player                           The player character in the game.
+     * @param player                            The player character in the game.
      */
     public void logic(int[][] nonDestroyableTilesRepresentation, int[][] destroyableTilesRepresentation, Player player) {
         Set<Direction> directionsToGo = enemy.getDirectionsToGo();
@@ -61,12 +61,10 @@ public class Ia {
     }
 
 
-
-
     /**
      * Checks if the player is visible to the enemy.
      *
-     * @param player                           The player character in the game.
+     * @param player                            The player character in the game.
      * @param nonDestroyableTilesRepresentation The representation of non-destroyable tiles in the game.
      * @param destroyableTilesRepresentation    The representation of destroyable tiles in the game.
      * @return True if the player is visible, false otherwise.
@@ -171,47 +169,82 @@ public class Ia {
     }
 
 
-
-    public void logic2(int[][] nonDestroyableTilesRepresentation, int[][] destroyableTilesRepresentation, Player player,boolean adjacency, boolean directed) {
+    public void logic2(int[][] nonDestroyableTilesRepresentation, int[][] destroyableTilesRepresentation, Player player, boolean adjacency, boolean directed) {
 
         Set<Direction> directionsToGo = enemy.getDirectionsToGo();
         directionsToGo.clear();
 
-        Vector playerPosInVector= BaseScreen.fromVectorToMatrixCoordinate(player.getMiddlePoint());
-        Vector enemyPosInVector= BaseScreen.fromVectorToMatrixCoordinate(enemy.getMiddlePoint());
+        Vector playerPosInVector = BaseScreen.fromVectorToMatrixCoordinate(player.getMiddlePoint());
+        Vector enemyPosInVector = BaseScreen.fromVectorToMatrixCoordinate(enemy.getMiddlePoint());
 
-        MatrixCor playerPosInMatrixCor=new MatrixCor((int)playerPosInVector.getY(), (int)playerPosInVector.getX());
-        MatrixCor enemyPosInMatrixCor=new MatrixCor((int) enemyPosInVector.getY(),(int)enemyPosInVector.getX());
-        List<MatrixCor> path=new ArrayList<>();
-       path=pathFinder.getShortestPath(enemyPosInMatrixCor,playerPosInMatrixCor,nonDestroyableTilesRepresentation,adjacency,directed);
-       System.out.println(path);
-       Direction direction=getNextDirectionToGoAccordingToPath(path,enemyPosInMatrixCor);
+        MatrixCor playerPosInMatrixCor = new MatrixCor((int) playerPosInVector.getY(), (int) playerPosInVector.getX());
+        MatrixCor enemyPosInMatrixCor = new MatrixCor((int) enemyPosInVector.getY(), (int) enemyPosInVector.getX());
+        List<MatrixCor> path = new ArrayList<>();
+        path = pathFinder.getShortestPath(enemyPosInMatrixCor, playerPosInMatrixCor, nonDestroyableTilesRepresentation, adjacency, directed);
+
+        Direction direction = getNextDirectionToGoAccordingToPath(path, enemyPosInMatrixCor);
+        System.out.println("ORIGINAL+"+ direction);
+        if(path.size()>0){
+            direction=adjust(direction,enemyPosInMatrixCor,path.get(0));
+        }
+        System.out.println("AJUSTADA+"+ direction);
+
         directionsToGo.add(direction);
+
     }
 
-    public Direction getNextDirectionToGoAccordingToPath(List<MatrixCor> path, MatrixCor enemyPosInMatrix){
-        if(path.isEmpty()){
+    public Direction adjust(Direction directionToGo, MatrixCor enemyPosInMatrix, MatrixCor nextCell) {
+        if (!enemy.getCollisionDirectionSet().contains(directionToGo)) {
+            System.out.println("NO TENGO COLISIONES");
+            return directionToGo;
+        }
+        System.out.println("mis colisiones son->"+enemy.getCollisionDirectionSet());
+        //si el path me dice arriba o abajo y hay colision
+        //entonces me debo mover a izquierda o a derecha
+        if (directionToGo == Direction.UP|| directionToGo==Direction.DOWN) {
+            System.out.println("TENGO COLISION UP O DOWN");
+
+            //si mi borde izquierdo no esta en la misma columna, entonces debo ir la derecha
+            if((int) BaseScreen.fromVectorToMatrixCoordinate(enemy.getPos()).getX()<nextCell.getCol()){
+                directionToGo=Direction.RIGHT;
+            }else{
+                directionToGo=Direction.LEFT;
+            }
+        }else if(directionToGo== Direction.LEFT || directionToGo==Direction.RIGHT){
+            System.out.println("TENGO COLISION RIGHT O LEFT");
+            if((int) BaseScreen.fromVectorToMatrixCoordinate(enemy.getPos()).getY()<nextCell.getRow()){
+                directionToGo=Direction.DOWN;
+            }else{
+                directionToGo=Direction.UP;
+            }
+        }
+        return directionToGo;
+
+    }
+
+    public Direction getNextDirectionToGoAccordingToPath(List<MatrixCor> path, MatrixCor enemyPosInMatrix) {
+        if (path.isEmpty()) {
             return Direction.NONE;
         }
-        MatrixCor nextCell=path.get(0);
-        if(enemyPosInMatrix.getRow()==nextCell.getRow()){
-            if(enemyPosInMatrix.getCol()<nextCell.getCol()){
+        MatrixCor nextCell = path.get(0);
+        if (enemyPosInMatrix.getRow() == nextCell.getRow()) {
+            if (enemyPosInMatrix.getCol() < nextCell.getCol()) {
                 return Direction.RIGHT;
             }
 
-            if(enemyPosInMatrix.getCol()>nextCell.getCol()){
+            if (enemyPosInMatrix.getCol() > nextCell.getCol()) {
                 return Direction.LEFT;
             }
         }
 
 
-        if(enemyPosInMatrix.getCol()==nextCell.getCol()){
+        if (enemyPosInMatrix.getCol() == nextCell.getCol()) {
 
-            if(enemyPosInMatrix.getRow()<nextCell.getRow()){
+            if (enemyPosInMatrix.getRow() < nextCell.getRow()) {
                 return Direction.DOWN;
             }
 
-            if(enemyPosInMatrix.getRow()>nextCell.getRow()){
+            if (enemyPosInMatrix.getRow() > nextCell.getRow()) {
                 return Direction.UP;
             }
 
