@@ -10,11 +10,22 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("controller-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1152, 768);
-        stage.setTitle("Bomber El Man!!");
-        stage.setScene(scene);
-        stage.show();
+        openWindow("start-screen.fxml","Bomberman", 625, 475);
+    }
+
+    public static void openWindow(String fxml, String title, int width, int height){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml));
+            Scene scene = new Scene(fxmlLoader.load(), width, height);
+            Stage stage = new Stage();
+            stage.setTitle(title);
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch (IOException ex){
+            ex.printStackTrace();
+        }
+
     }
 
     public static void main(String[] args) {

@@ -8,6 +8,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import main_module.BaseScreen;
+import main_module.Main;
 import main_module.screens.MenuScreen;
 import main_module.screens.ScreenA;
 
@@ -46,7 +47,7 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.gc = canvas.getGraphicsContext2D();
 
-        initMenu();
+        startGameThread();
     }
 
     /**
@@ -86,7 +87,7 @@ public class Controller implements Initializable {
             }
 
             Platform.runLater(() -> {
-                initMenu(); // Display the menu again
+                Main.openWindow("start-screen.fxml", "Bomberman", 625, 475);
                 endGame.set(false);
             });
         }).start();
@@ -107,29 +108,4 @@ public class Controller implements Initializable {
         });
     }
 
-    /**
-     * Initializes the main menu.
-     */
-    private void initMenu() {
-        menuScreen = new MenuScreen();
-        Pane menuPane = new Pane(menuScreen.getMenuLayout());
-        menuPane.setStyle("-fx-background-color: navy;");
-
-        double centerX = 450;
-        double centerY = 255;
-        menuPane.setLayoutX(centerX);
-        menuPane.setLayoutY(centerY);
-
-        menuScreen.setNewGameAction(() -> {
-            anchorPane.getChildren().remove(menuPane); // Hide the menu
-            startGameThread();
-        });
-
-        menuScreen.setCloseGameAction(() -> {
-            // Close the application
-            System.exit(0);
-        });
-
-        anchorPane.getChildren().add(menuPane);
-    }
 }
