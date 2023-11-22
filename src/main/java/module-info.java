@@ -1,6 +1,7 @@
 module main_module {
     requires javafx.controls;
     requires javafx.fxml;
+    requires junit;
 
 
     opens main_module to javafx.fxml;

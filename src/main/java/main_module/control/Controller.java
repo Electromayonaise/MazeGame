@@ -46,7 +46,6 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.gc = canvas.getGraphicsContext2D();
-
         startGameThread();
     }
 
@@ -55,7 +54,7 @@ public class Controller implements Initializable {
      */
     public void startGameThread() {
 
-        initActions();
+        initActions(Main.adjacencyList, Main.directed);
 
         new Thread(() -> {
             while (!endGame.get()) {
@@ -81,14 +80,18 @@ public class Controller implements Initializable {
             });
 
             try {
-                Thread.sleep(5000); // Display "GameOver" for 5 seconds
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
             Platform.runLater(() -> {
+
+                endGame.set(true);
+                canvas.getScene().getWindow().hide();
                 Main.openWindow("start-screen.fxml", "Bomberman", 625, 475);
-                endGame.set(false);
+
+
             });
         }).start();
     }
@@ -96,8 +99,8 @@ public class Controller implements Initializable {
     /**
      * Initializes the user input actions.
      */
-    public void initActions() {
-        screenA = new ScreenA(canvas,false,false);
+    public void initActions(boolean adjacencyList, boolean directed) {
+        screenA = new ScreenA(canvas,adjacencyList,directed);
 
         canvas.setOnKeyReleased(event -> {
             screenA.setOnKeyReleased(event);

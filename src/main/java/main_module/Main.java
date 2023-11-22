@@ -8,6 +8,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
+
+    public static boolean directed;
+
+    public static boolean adjacencyList;
     @Override
     public void start(Stage stage) throws IOException {
         openWindow("start-screen.fxml","Bomberman", 625, 475);
@@ -26,6 +30,11 @@ public class Main extends Application {
             ex.printStackTrace();
         }
 
+    }
+
+    public static void setBooleans(boolean directed, boolean adjacencyList){
+        Main.directed = directed;
+        Main.adjacencyList = adjacencyList;
     }
 
     public static void main(String[] args) {
