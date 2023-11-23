@@ -27,5 +27,14 @@
   </ul>
 </div>
 
+# About the project 
+
+We want to create a maze game, where the player has to fight enemies on his way to the maze exit. The maze itself is to be modeled as a graph, where the player must go from an initial node to an end node. We want the game to be as interactive as possible, so the player will be something like a bomberman, where he can throw bombs to kill the enemies, and the enemies will follow him using the shortest possible path.
+
+## Important comments about the project
+
 ### Final commit of first delivery:
 - Commit ID: [54fbf95](https://github.com/Electromayonaise/MazeGame/commit/54fbf958dfa7e38b58d75a397b0878e424437060)
+
+### About tests for the structures: 
+Due to a problem with Maven dependencies, we where forced to develop the tests on the branch [tests](https://github.com/Electromayonaise/MazeGame/tree/tests), so please refer to said branch for structure testing
