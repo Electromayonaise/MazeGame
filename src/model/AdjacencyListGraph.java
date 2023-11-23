@@ -114,6 +114,9 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     }
 
     private List<T> bfs(T origin, T destination) {
+        if(origin.equals(destination)){
+            return new ArrayList<>();
+        }
         Set<T>visited=new HashSet<>();
         Queue<T> queue = new LinkedList<>();
         queue.add(origin);
@@ -163,7 +166,6 @@ public class AdjacencyListGraph<T> implements Graph<T> {
 
 
 }
-
 
 
 

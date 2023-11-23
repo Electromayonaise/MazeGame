@@ -1,16 +1,34 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * The {@code MapGenerator} class is responsible for generating game maps using a maze generation algorithm. It supports
+ * the generation of maps with specified dimensions, including options for creating adjacency lists and directed graphs.
+ */
 public class MapGenerator {
+    /**
+     * The maze generator used to create the maze structure.
+     */
     private MazeGenerator mazeGenerator;
 
+    /**
+     * Constructs a {@code MapGenerator} and initializes the maze generator.
+     */
     public MapGenerator() {
         mazeGenerator = new MazeGenerator();
     }
 
+    /**
+     * Generates a map with the specified dimensions, adjacency list option, and directed graph option.
+     *
+     * @param row          The number of rows in the map.
+     * @param col          The number of columns in the map.
+     * @param adjacencyList Indicates whether to use an adjacency list for maze generation.
+     * @param directed     Indicates whether to generate a directed maze.
+     * @return A 2D array representing the generated map.
+     */
     public int[][] generateMap(int row, int col, boolean adjacencyList, boolean directed) {
         int[][] map = new int[row][col];
         for (int[] mapRow : map) {
@@ -38,18 +56,19 @@ public class MapGenerator {
                 mapWithBorders[i + 1][j + 1] = map[i][j];
             }
         }
-
-        for (int i = 0; i < mapWithBorders.length; i++) {
-            for (int j = 0; j < mapWithBorders[0].length; j++) {
-                System.out.print(mapWithBorders[i][j] + " ");
-            }
-            System.out.println();
-        }
-
-
+        System.out.println("mapWithBorders = " + Arrays.deepToString(mapWithBorders));
         return mapWithBorders;
     }
 
+    /**
+     * Performs depth-first search (DFS) on the graph to update the map based on visited nodes.
+     *
+     * @param graph   The graph representing the maze structure.
+     * @param current The current position in the maze.
+     * @param visited 2D array indicating visited nodes in the maze.
+     * @param map     The current state of the map being generated.
+     * @return The updated map after DFS traversal.
+     */
     public int[][] dfs(Graph<MatrixCor> graph, MatrixCor current, boolean[][] visited, int[][] map) {
         visited[current.getRow()][current.getCol()] = true;
         map[current.getRow() * 2][current.getCol() * 2] = 0;
@@ -60,11 +79,9 @@ public class MapGenerator {
             map[midRowInMap][midColInMap] = 0;
             if (!visited[neighbor.getRow()][neighbor.getCol()]) {
                 map = dfs(graph, neighbor, visited, map);
-
             }
-
         }
         return map;
-
     }
 }
+
