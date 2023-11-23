@@ -29,13 +29,15 @@ public class MapGenerator {
      * @param directed     Indicates whether to generate a directed maze.
      * @return A 2D array representing the generated map.
      */
-    public int[][] generateMap(int row, int col, boolean adjacencyList, boolean directed) {
+    public int[][] generateMap(int row, int col, boolean adjacencyList, boolean directed, Graph<MatrixCor> graph) {
         int[][] map = new int[row][col];
         for (int[] mapRow : map) {
             Arrays.fill(mapRow, 1);
         }
         boolean[][] visited = new boolean[row / 2 + 1][col / 2 + 1];
-        Graph<MatrixCor> graph = mazeGenerator.generateMaze(row / 2 + 1, col / 2 + 1, adjacencyList, directed);
+        if (graph == null) {
+            graph = mazeGenerator.generateMaze(row / 2 + 1, col / 2 + 1, adjacencyList, directed);
+        }
         MatrixCor initial = new MatrixCor(0, 0);
 
         map = dfs(graph, initial, visited, map);
@@ -59,6 +61,8 @@ public class MapGenerator {
         System.out.println("mapWithBorders = " + Arrays.deepToString(mapWithBorders));
         return mapWithBorders;
     }
+
+
 
     /**
      * Performs depth-first search (DFS) on the graph to update the map based on visited nodes.

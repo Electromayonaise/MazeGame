@@ -18,6 +18,7 @@ public class Main {
     public static void main(String[] args) {
         Main main = new Main();
         test();
+        generateMazeGraph();
       //  main.menu();
        // System.out.println("Bye");
     }
@@ -26,7 +27,32 @@ public class Main {
         PathFinder pathFinder = new PathFinder();
 
         // Generate a map
-        int[][] map = mapGenerator.generateMap(21, 21, false, true);
+        int[][] map = mapGenerator.generateMap(21, 21, false, true, null);
+
+        // Display the generated map (optional)
+        System.out.println("Generated Map:");
+        for (int[] row : map) {
+            System.out.println(Arrays.toString(row));
+        }
+
+        // Define origin and destination nodes
+        MatrixCor origin = new MatrixCor(1, 1);
+        MatrixCor destination = new MatrixCor(21, 21);
+
+        // Get the shortest path
+        List<MatrixCor> path = pathFinder.getShortestPath(origin, destination, map, false, true);
+
+        // Display the generated path (optional)
+        System.out.println("Shortest Path:");
+        System.out.println(path);
+    }
+
+    public static void generateMazeGraph(){
+        MapGenerator mapGenerator = new MapGenerator();
+        PathFinder pathFinder = new PathFinder();
+
+        // Generate a map
+        int[][] map = mapGenerator.generateMap(21, 21, false, true, null);
 
         // Display the generated map (optional)
         System.out.println("Generated Map:");
