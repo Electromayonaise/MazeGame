@@ -188,15 +188,21 @@ public class ScreenA extends BaseScreen {
 
         // If the player finishes off all the enemies show the portal
         if (enemyList.isEmpty()) {
-
             showPortal();
 
-            // If the player is in the portal position
-            Vector playerMatrixPos = fromVectorToMatrixCoordinate(player.getPos());
-            int playerRow = (int) playerMatrixPos.getY();
-            int playerCol = (int) playerMatrixPos.getX();
+            // If the player is close to the portal
+            Vector playerPos = player.getPos();
+            int portalRow = 1;
+            int portalCol = 1;
 
-            if(playerRow == 1 && playerCol == 1) {
+            // Define the maximum distance in terms of tile units
+            double maxDistance = Tile.SIZE; // You can adjust this value
+
+            // Calculate the distance between the player and the portal
+            double distance = Math.sqrt(Math.pow(playerPos.getX() - portalCol * Tile.SIZE, 2) + Math.pow(playerPos.getY() - portalRow * Tile.SIZE, 2));
+
+            // If the player is close enough to the portal, update the stage
+            if (distance <= maxDistance) {
                 updateStage();
             }
         }

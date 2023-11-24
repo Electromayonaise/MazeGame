@@ -26,7 +26,6 @@ public class MazeGenerator {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
                 graph.addNode(new MatrixCor(i, j));
-                System.out.println("graph.addNode(new MatrixCor(" + i + ", " + j + "));");
             }
         }
         MatrixCor initialCell = new MatrixCor(0, 0);
@@ -43,8 +42,6 @@ public class MazeGenerator {
                 stack.push(current);
                 MatrixCor neighborToConnect = chooseNotVisitedNeighborRandomly(notVisitedNeighbors);
                 graph.addEdge(current, neighborToConnect, 1);
-                System.out.println("graph.addEdge(new MatrixCor(" + current.getRow() + ", " + current.getCol() + "), new MatrixCor(" + neighborToConnect.getRow() + ", " + neighborToConnect.getCol() + "), 1);");
-
                 visited[neighborToConnect.getRow()][neighborToConnect.getCol()] = true;
                 stack.push(neighborToConnect);
             }

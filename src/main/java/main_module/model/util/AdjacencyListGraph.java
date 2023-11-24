@@ -144,7 +144,6 @@ public class AdjacencyListGraph<T> implements Graph<T> {
             }
         }
         if(pathWasFound){
-            System.out.println("EUREKA");
             path=buildPath(origin,destination,mapOfPrevs);
         }
 

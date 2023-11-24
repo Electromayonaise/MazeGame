@@ -56,7 +56,6 @@ public class MapGenerator {
                 mapWithBorders[i + 1][j + 1] = map[i][j];
             }
         }
-        System.out.println("mapWithBorders = " + Arrays.deepToString(mapWithBorders));
         return mapWithBorders;
     }
 

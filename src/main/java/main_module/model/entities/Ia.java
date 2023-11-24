@@ -183,11 +183,9 @@ public class Ia {
         path = pathFinder.getShortestPath(enemyPosInMatrixCor, playerPosInMatrixCor, nonDestroyableTilesRepresentation, adjacency, directed);
 
         Direction direction = getNextDirectionToGoAccordingToPath(path, enemyPosInMatrixCor);
-        System.out.println("ORIGINAL+"+ direction);
         if(path.size()>0){
             direction=adjust(direction,enemyPosInMatrixCor,path.get(0));
         }
-        System.out.println("AJUSTADA+"+ direction);
 
         directionsToGo.add(direction);
 
@@ -195,14 +193,11 @@ public class Ia {
 
     public Direction adjust(Direction directionToGo, MatrixCor enemyPosInMatrix, MatrixCor nextCell) {
         if (!enemy.getCollisionDirectionSet().contains(directionToGo)) {
-            System.out.println("NO TENGO COLISIONES");
             return directionToGo;
         }
-        System.out.println("mis colisiones son->"+enemy.getCollisionDirectionSet());
         //si el path me dice arriba o abajo y hay colision
         //entonces me debo mover a izquierda o a derecha
         if (directionToGo == Direction.UP|| directionToGo==Direction.DOWN) {
-            System.out.println("TENGO COLISION UP O DOWN");
 
             //si mi borde izquierdo no esta en la misma columna, entonces debo ir la derecha
             if((int) BaseScreen.fromVectorToMatrixCoordinate(enemy.getPos()).getX()<nextCell.getCol()){
@@ -211,7 +206,6 @@ public class Ia {
                 directionToGo=Direction.LEFT;
             }
         }else if(directionToGo== Direction.LEFT || directionToGo==Direction.RIGHT){
-            System.out.println("TENGO COLISION RIGHT O LEFT");
             if((int) BaseScreen.fromVectorToMatrixCoordinate(enemy.getPos()).getY()<nextCell.getRow()){
                 directionToGo=Direction.DOWN;
             }else{
