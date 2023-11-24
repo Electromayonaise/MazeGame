@@ -45,6 +45,8 @@ public class TileManager {
      */
     private Image bombDamageImage;
 
+    private Image portalImage;
+
     /**
      * Constructs a {@code TileManager} and initializes the required resources, including various tile images.
      */
@@ -54,6 +56,7 @@ public class TileManager {
         destroyableImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/main_module/tiles/destroyable.png")), false);
         bombImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/main_module/tiles/bomb.png")), false);
         bombDamageImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/main_module/tiles/bombDamage.png")), false);
+        portalImage = new Image(getClass().getResource("/main_module/animations/portal.png").toString(), false);
     }
 
     /**
@@ -93,6 +96,7 @@ public class TileManager {
             case DESTROYABLE -> image = destroyableImage;
             case BOMB -> image = bombImage;
             case BOMB_DAMAGE -> image = bombDamageImage;
+            case PORTAL -> image = portalImage;
             default -> image = grassImage;
         }
         return image;

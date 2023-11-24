@@ -28,6 +28,12 @@ public class ScreenA extends BaseScreen {
 
     private boolean directed;
 
+    private int portalRow;
+
+    private int portalCol;
+
+
+
     /**
      * Creates a new instance of the ScreenA class.
      *
@@ -41,6 +47,7 @@ public class ScreenA extends BaseScreen {
         super.worldLimits = new Vector(MAX_COL * Tile.SIZE, MAX_ROW * Tile.SIZE);
         maxCol = MAX_COL;
         maxRow = MAX_ROW;
+        isPortalShowing = false;
 
         /***Initialization of layers***/
 
@@ -125,6 +132,10 @@ public class ScreenA extends BaseScreen {
             }
         }
 
+        // For the portal
+        generateRandomPortalPosition();
+        noCollisionTilesMatrix[portalRow][portalCol] = 2;
+
         return noCollisionTilesMatrix;
     }
 
@@ -188,12 +199,14 @@ public class ScreenA extends BaseScreen {
 
         // If the player finishes off all the enemies show the portal
         if (enemyList.isEmpty()) {
-            showPortal();
+            if(!isPortalShowing){
+                isPortalShowing = true;
+                System.out.println(portalCol);
+                System.out.println(portalRow);
+            }
 
             // If the player is close to the portal
             Vector playerPos = player.getPos();
-            int portalRow = 1;
-            int portalCol = 1;
 
             // Define the maximum distance in terms of tile units
             double maxDistance = Tile.SIZE; // You can adjust this value
@@ -217,12 +230,15 @@ public class ScreenA extends BaseScreen {
         return false;
     }
 
-    public void showPortal(){
-        Image portalImage = new Image(getClass().getResource("/main_module/animations/portal.png").toString(), false);
-        Tile portalTile = new Tile(new Vector(Tile.SIZE, Tile.SIZE), portalImage);
-
-        tilesWithNoCollision[1][1] = portalTile;
+    private void generateRandomPortalPosition() {
+        Random random = new Random();
+        do {
+            portalCol = random.nextInt(MAX_COL);
+            portalRow = random.nextInt(MAX_ROW);
+        } while (portalCol % 2 == 0 || portalRow % 2 == 0);
     }
+
+
 
     /**
      * Checks if the player picks up a bomb from the screen.
@@ -234,7 +250,7 @@ public class ScreenA extends BaseScreen {
         int playerRow = (int) playerMatrixPos.getY();
         int playerCol = (int) playerMatrixPos.getX();
 
-        if (tilesWithNoCollision[playerRow][playerCol] != null) {
+        if (tilesWithNoCollision[playerRow][playerCol] != null && tilesWithNoCollisionRepresentation[playerRow][playerCol] == 1) {
             removeEntityFromField(playerRow, playerCol, 0);
             player.addBomb();
             return true;
@@ -247,6 +263,7 @@ public class ScreenA extends BaseScreen {
      * Updates the game to the next stage.
      */
     public void updateStage() {
+        isPortalShowing = false;
         player.setPos(new Vector(INITIAL_PLAYER_POS_X, INITIAL_PLAYER_POS_Y));
         stage++; // Update the stage
 

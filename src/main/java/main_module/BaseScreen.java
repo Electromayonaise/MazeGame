@@ -37,6 +37,10 @@ public abstract class BaseScreen {
 
     protected int stage = 1;
 
+    protected boolean isPortalShowing;
+
+
+
     /*-------------------representation layers---------------------------*/
     protected int[][] tilesWithNoCollisionRepresentation;
 
@@ -120,12 +124,14 @@ public abstract class BaseScreen {
         }
     }
 
-    /******-----paint----*/
+    /******-----paint----******/
 
     public void paint() {
         gc.setFill(Color.BLACK);
         gc.fillRect(-1152, -768, canvas.getWidth() * 2, canvas.getHeight() * 2);
-        paintEntitiesInMatrix(tilesWithNoCollision);
+        if(isPortalShowing) {
+            paintEntitiesInMatrix(tilesWithNoCollision);
+        }
         paintEntitiesInMatrix(destroyableTiles);
         paintEntitiesInMatrix(bombs);
         paintEntitiesInMatrix(nonDestroyableTiles);
@@ -159,7 +165,11 @@ public abstract class BaseScreen {
         if (player.isBombsIncreased()) {
             bombIncreasedEffect();
         }
+
+
     }
+
+
 
     public void bombIncreasedEffect() {
         // Start a thread for the "+++" effect
@@ -252,6 +262,7 @@ public abstract class BaseScreen {
         Entity entity;
         switch (num) {
             case 1 -> entity = tileManager.generateNonCollisionTile(pos, TileType.BOMB);
+            case 2 -> entity = tileManager.generateNonCollisionTile(pos, TileType.PORTAL);
             default -> entity = null;
         }
         return entity;
