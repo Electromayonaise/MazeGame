@@ -6,6 +6,7 @@ import main_module.model.enums.Direction;
 import main_module.model.util.Vector;
 import main_module.model.managers.BombManager;
 
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -50,10 +51,9 @@ public class Player extends Character {
         super(pos, hp);
         super.width = Tile.SIZE;
         super.height = Tile.SIZE;
-        super.currentImage = new Image(getClass().getResource("/animations/player/standardPos.png").toString(), false);
+        super.currentImage = new Image(Objects.requireNonNull(getClass().getResource("/animations/player/standardPos.png")).toString(), false);
         this.bombManager = bombManager;
-        this.hearthImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/animations/tiles/Hearth.png")), false);
-
+        this.hearthImage = new Image(Objects.requireNonNull(getClass().getResource("/animations/tiles/Hearth.png")).toString(), false);
         initPlayerMovement();
     }
 

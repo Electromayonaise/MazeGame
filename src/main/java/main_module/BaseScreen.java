@@ -17,6 +17,7 @@ import main_module.model.util.Vector;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Abstract class representing the base screen of the game.
@@ -154,7 +155,7 @@ public abstract class BaseScreen {
         gc.fillText("Stage: " + stage, SCREEN_WIDTH / 2 - 50, 40);
 
         // Display the bomb image followed by the number of bombs
-        Image bombImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/animations/tiles/bomb.png")), false);
+        Image bombImage = new Image(Objects.requireNonNull(getClass().getResource("/animations/tiles/bomb.png")).toString(), false);
         gc.drawImage(bombImage, SCREEN_WIDTH - 300, 10, 40, 40);
         gc.setFill(Color.GHOSTWHITE);
         gc.setFont(new Font(30));

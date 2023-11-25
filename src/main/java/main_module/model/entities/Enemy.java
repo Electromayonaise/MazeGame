@@ -6,6 +6,7 @@ import main_module.model.enums.SideEffect;
 import main_module.model.util.Vector;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -33,7 +34,7 @@ public class Enemy extends Character implements ICollide {
         hp = ENEMY_HP;
         super.width = Tile.SIZE;
         super.height = Tile.SIZE;
-        super.currentImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/animations/character/enemies/enemy.png")), false);
+        super.currentImage = new Image(Objects.requireNonNull(getClass().getResource("/animations/character/enemies/enemy.png")).toString(), false);
         directionsToGo = new HashSet<>(5);
         ia = new Ia(this);
     }

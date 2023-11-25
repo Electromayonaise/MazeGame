@@ -5,6 +5,8 @@ import main_module.model.entities.Enemy;
 import main_module.model.enums.EnemyType;
 import main_module.model.util.Vector;
 
+import java.util.Objects;
+
 /**
  * The {@code EnemyManager} class is responsible for generating different types of enemies.
  * It provides methods to create instances of enemy entities based on the specified {@link EnemyType}.
@@ -20,7 +22,7 @@ public class EnemyManager {
      * Constructs an {@code EnemyManager} and initializes the enemy image.
      */
     public EnemyManager() {
-        enemyImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/animations/character/enemies/enemy.png")), false);
+        enemyImage = new Image(Objects.requireNonNull(getClass().getResource("/animations/character/enemies/enemy.png")).toString(), false);
     }
 
     /**

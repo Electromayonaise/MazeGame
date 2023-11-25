@@ -11,41 +11,13 @@
     <list default="true" id="5b426c63-4cc4-4f4c-a9e4-7cae1b5242ca" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main_module/BaseScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main_module/BaseScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main_module/model/entities/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main_module/model/entities/Bomb.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main_module/model/entities/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main_module/model/entities/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main_module/model/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main_module/model/entities/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main_module/model/managers/EnemyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main_module/model/managers/EnemyManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main_module/model/managers/TemporalTileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main_module/model/managers/TemporalTileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main_module/model/managers/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main_module/model/managers/TileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/animations/character/enemies/enemy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/animations/player/BombermanMovement/DOWN/down_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/animations/player/BombermanMovement/DOWN/down_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/animations/player/BombermanMovement/DOWN/down_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/animations/player/BombermanMovement/DOWN/down_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/animations/player/BombermanMovement/LEFT/left_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/animations/player/BombermanMovement/LEFT/left_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/animations/player/BombermanMovement/LEFT/left_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/animations/player/BombermanMovement/LEFT/left_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/animations/player/BombermanMovement/RIGHT/right_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/animations/player/BombermanMovement/RIGHT/right_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/animations/player/BombermanMovement/RIGHT/right_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/animations/player/BombermanMovement/RIGHT/right_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/animations/player/BombermanMovement/UP/up_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/animations/player/BombermanMovement/UP/up_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/animations/player/BombermanMovement/UP/up_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/animations/player/BombermanMovement/UP/up_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/animations/player/EndGame.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/animations/player/GameOver.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/animations/player/standardPos.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/animations/portal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/tiles/Hearth.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/tiles/bomb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/tiles/bombDamage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/tiles/brick.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/tiles/brick.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/tiles/destroyable.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/tiles/explotionGif.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_module/tiles/grass.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +65,7 @@
       <updated>1700877980457</updated>
       <workItem from="1700877981758" duration="1507000" />
       <workItem from="1700882216899" duration="869000" />
+      <workItem from="1700883295882" duration="1365000" />
     </task>
     <servers />
   </component>

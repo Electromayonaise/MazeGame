@@ -10,6 +10,8 @@ import main_module.model.enums.SideEffect;
 import main_module.model.enums.TileType;
 import main_module.model.util.Vector;
 
+import java.util.Objects;
+
 /**
  * The {@code TileManager} class manages aspects related to tiles in the game, including the generation of collision
  * and non-collision tiles, as well as handling different tile images based on the specified {@link TileType}.
@@ -51,13 +53,14 @@ public class TileManager {
      * Constructs a {@code TileManager} and initializes the required resources, including various tile images.
      */
     public TileManager() {
-        brickImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/animations/tiles/brick.png")), false);
-        grassImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/animations/tiles/grass.png")), false);
-        destroyableImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/animations/tiles/destroyable.png")), false);
-        bombImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/animations/tiles/bomb.png")), false);
-        bombDamageImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/animations/tiles/bombDamage.png")), false);
-        portalImage = new Image(getClass().getResource("/animations/portal.png").toString(), false);
+        brickImage = new Image(Objects.requireNonNull(getClass().getResource("/animations/tiles/brick.png")).toString(), false);
+        grassImage = new Image(Objects.requireNonNull(getClass().getResource("/animations/tiles/grass.png")).toString(), false);
+        destroyableImage = new Image(Objects.requireNonNull(getClass().getResource("/animations/tiles/destroyable.png")).toString(), false);
+        bombImage = new Image(Objects.requireNonNull(getClass().getResource("/animations/tiles/bomb.png")).toString(), false);
+        bombDamageImage = new Image(Objects.requireNonNull(getClass().getResource("/animations/tiles/bombDamage.png")).toString(), false);
+        portalImage = new Image(Objects.requireNonNull(getClass().getResource("/animations/portal.png")).toString(), false);
     }
+
 
     /**
      * Generates a collision tile based on the specified position, {@link TileType}, and side effect.

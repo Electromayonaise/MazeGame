@@ -7,6 +7,8 @@ import main_module.model.enums.SideEffect;
 import main_module.model.enums.TileType;
 import main_module.model.util.Vector;
 
+import java.util.Objects;
+
 /**
  * The {@code TemporalTileManager} class is responsible for generating temporal tiles with or without collision.
  * It provides methods to create instances of {@link TemporalTile} entities based on the specified {@link TileType},
@@ -72,7 +74,7 @@ public class TemporalTileManager {
      * Loads the required resources, including the bomb damage image.
      */
     private void loadResources() {
-        bombDamageImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/animations/tiles/explotionGif.gif")), false);
+        bombDamageImage = new Image(Objects.requireNonNull(getClass().getResource("/animations/tiles/explotionGif.gif")).toString(), false);
     }
 }
 
