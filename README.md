@@ -29,7 +29,13 @@
 
 # About the project 
 
-We want to create a maze game, where the player has to fight enemies on his way to the maze exit. The maze itself is to be modeled as a graph, where the player must go from an initial node to an end node. We want the game to be as interactive as possible, so the player will be something like a bomberman, where he can throw bombs to kill the enemies, and the enemies will follow him using the shortest possible path.
+We want to create a maze game, where the player has to fight enemies on his way to the maze exit. The maze itself is to be modeled as a graph, where the player must go from an initial node to an end node. We want the game to be as interactive as possible, so the player will be something like a bomberman, where he can throw bombs to kill the enemies, and the enemies will follow him using the shortest possible path. 
+
+## Short description of how the structures within the game work
+
+- When the player presses the start game button, a maze will be generated in the form of a graph utilizing a randomized DFS algorithm, then, said graph is then translated into a map.
+- The enemies follow the player by using the shortest path provided by a bfs search
+- The player may choose the graph implementation (directed, not directed) and representation (adjacency list, adjacency matrix) when initializing the game, as per the given requirements. Said change does not have any visual change on the game, as methods within it work in all 4 possible cases
 
 ## Important comments about the project
 
