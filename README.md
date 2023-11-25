@@ -20,7 +20,7 @@
     <body><h3 style="display: inline-block">Second integrative task of the discrete structures course</h3></body>
      <body><h3 style="display: inline-block"><a href="https://docs.google.com/document/d/1Sd4d1kTLxUdXZYQZJvbMPPqjIQ-U9kF1ZZahD_DQex0/edit?usp=sharing">DOCUMENTATION</a></h3></body>
        <body><h3 style="display: inline-block">Note: IDE Used: IntelliJ IDEA 2023.2.2</h3></body>
-       <body><h3 style="display: inline-block">Project SDK: Oracle OpenJDK version 20.0.1 (take this into account in order for the project to launch correctly) </h3></body>
+       <body><h3 style="display: inline-block">Project SDK: BellSoft Liberica version 21.0.1 (take this into account in order for the project to launch correctly) </h3></body>
         <body><h3 style="display: inline-block">Before making any use of the source code on this project, please read the license it is under</h3></body>
      
     
