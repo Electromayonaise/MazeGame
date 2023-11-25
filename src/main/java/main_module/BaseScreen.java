@@ -154,7 +154,7 @@ public abstract class BaseScreen {
         gc.fillText("Stage: " + stage, SCREEN_WIDTH / 2 - 50, 40);
 
         // Display the bomb image followed by the number of bombs
-        Image bombImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/main_module/tiles/bomb.png")), false);
+        Image bombImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/animations/tiles/bomb.png")), false);
         gc.drawImage(bombImage, SCREEN_WIDTH - 300, 10, 40, 40);
         gc.setFill(Color.GHOSTWHITE);
         gc.setFont(new Font(30));

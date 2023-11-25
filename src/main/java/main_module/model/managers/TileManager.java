@@ -51,12 +51,12 @@ public class TileManager {
      * Constructs a {@code TileManager} and initializes the required resources, including various tile images.
      */
     public TileManager() {
-        brickImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/main_module/tiles/brick.png")), false);
-        grassImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/main_module/tiles/grass.png")), false);
-        destroyableImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/main_module/tiles/destroyable.png")), false);
-        bombImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/main_module/tiles/bomb.png")), false);
-        bombDamageImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/main_module/tiles/bombDamage.png")), false);
-        portalImage = new Image(getClass().getResource("/main_module/animations/portal.png").toString(), false);
+        brickImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/animations/tiles/brick.png")), false);
+        grassImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/animations/tiles/grass.png")), false);
+        destroyableImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/animations/tiles/destroyable.png")), false);
+        bombImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/animations/tiles/bomb.png")), false);
+        bombDamageImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/animations/tiles/bombDamage.png")), false);
+        portalImage = new Image(getClass().getResource("/animations/portal.png").toString(), false);
     }
 
     /**

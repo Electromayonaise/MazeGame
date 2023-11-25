@@ -20,7 +20,7 @@ public class EnemyManager {
      * Constructs an {@code EnemyManager} and initializes the enemy image.
      */
     public EnemyManager() {
-        enemyImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/main_module/animations/character/enemies/enemy.png")), false);
+        enemyImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/animations/character/enemies/enemy.png")), false);
     }
 
     /**

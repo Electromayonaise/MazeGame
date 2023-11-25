@@ -72,7 +72,7 @@ public class TemporalTileManager {
      * Loads the required resources, including the bomb damage image.
      */
     private void loadResources() {
-        bombDamageImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/main_module/tiles/explotionGif.gif")), false);
+        bombDamageImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/animations/tiles/explotionGif.gif")), false);
     }
 }
 

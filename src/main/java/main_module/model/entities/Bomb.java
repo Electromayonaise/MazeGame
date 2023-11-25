@@ -33,7 +33,7 @@ public class Bomb extends CollisionTile {
      * @return The image of the bomb.
      */
     public static Image loadImage() {
-        return new Image(((System.getProperty("user.dir") + "/src/main/resources/main_module/tiles/bomb.png")), false);
+        return new Image(((System.getProperty("user.dir") + "/src/main/resources/animations/tiles/bomb.png")), false);
     }
 
     /**

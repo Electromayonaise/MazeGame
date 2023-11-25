@@ -50,9 +50,9 @@ public class Player extends Character {
         super(pos, hp);
         super.width = Tile.SIZE;
         super.height = Tile.SIZE;
-        super.currentImage = new Image(getClass().getResource("/main_module/animations/player/standardPos.png").toString(), false);
+        super.currentImage = new Image(getClass().getResource("/animations/player/standardPos.png").toString(), false);
         this.bombManager = bombManager;
-        this.hearthImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/main_module/tiles/Hearth.png")), false);
+        this.hearthImage = new Image(((System.getProperty("user.dir") + "/src/main/resources/animations/tiles/Hearth.png")), false);
 
         initPlayerMovement();
     }
@@ -70,7 +70,7 @@ public class Player extends Character {
             for (int frame = 0; frame < numFrames; frame++) {
                 String directionName = getDirectionName(direction);
                 String imageName = directionName + "_" + (frame + 1) + ".png";
-                playerMovement[direction][frame] = new Image(getClass().getResource("/main_module/animations/player/BombermanMovement/" + directionName.toUpperCase() + "/" + imageName).toString(), false);
+                playerMovement[direction][frame] = new Image(getClass().getResource("/animations/player/BombermanMovement/" + directionName.toUpperCase() + "/" + imageName).toString(), false);
             }
         }
     }
@@ -135,7 +135,7 @@ public class Player extends Character {
             frameCounter++;
         } else {
             frameCounter = 0; // Reset the counter if there is no movement
-            currentImage = new Image(getClass().getResource("/main_module/animations/player/standardPos.png").toString(), false);
+            currentImage = new Image(getClass().getResource("/animations/player/standardPos.png").toString(), false);
         }
     }
 
