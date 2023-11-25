@@ -1,0 +1,8 @@
+module:main_module
+main_module
+main_module.control
+main_module.model.entities
+main_module.model.enums
+main_module.model.managers
+main_module.model.util
+main_module.screens
