@@ -169,6 +169,15 @@ public class Ia {
     }
 
 
+    /**
+     * Determines the movement logic for an enemy character based on the given parameters.
+     *
+     * @param nonDestroyableTilesRepresentation Representation of non-destroyable tiles in the game.
+     * @param destroyableTilesRepresentation     Representation of destroyable tiles in the game.
+     * @param player                             The player character in the game.
+     * @param adjacency                          Specifies whether to consider adjacency in pathfinding.
+     * @param directed                           Specifies whether the movement should be directed.
+     */
     public void logic2(int[][] nonDestroyableTilesRepresentation, int[][] destroyableTilesRepresentation, Player player, boolean adjacency, boolean directed) {
 
         Set<Direction> directionsToGo = enemy.getDirectionsToGo();
@@ -188,34 +197,45 @@ public class Ia {
         }
 
         directionsToGo.add(direction);
-
     }
 
+    /**
+     * Adjusts the direction to go based on collision and the next cell in the path.
+     *
+     * @param directionToGo    The original direction to go.
+     * @param enemyPosInMatrix The current position of the enemy in matrix coordinates.
+     * @param nextCell         The next cell in the path to reach the target.
+     * @return The adjusted direction to go.
+     */
     public Direction adjust(Direction directionToGo, MatrixCor enemyPosInMatrix, MatrixCor nextCell) {
         if (!enemy.getCollisionDirectionSet().contains(directionToGo)) {
             return directionToGo;
         }
-        //si el path me dice arriba o abajo y hay colision
-        //entonces me debo mover a izquierda o a derecha
-        if (directionToGo == Direction.UP|| directionToGo==Direction.DOWN) {
-
-            //si mi borde izquierdo no esta en la misma columna, entonces debo ir la derecha
-            if((int) BaseScreen.fromVectorToMatrixCoordinate(enemy.getPos()).getX()<nextCell.getCol()){
-                directionToGo=Direction.RIGHT;
-            }else{
-                directionToGo=Direction.LEFT;
+        // If the path indicates up or down and there is a collision, move left or right accordingly.
+        if (directionToGo == Direction.UP || directionToGo == Direction.DOWN) {
+            // If the left edge is not in the same column, move to the right; otherwise, move to the left.
+            if ((int) BaseScreen.fromVectorToMatrixCoordinate(enemy.getPos()).getX() < nextCell.getCol()) {
+                directionToGo = Direction.RIGHT;
+            } else {
+                directionToGo = Direction.LEFT;
             }
-        }else if(directionToGo== Direction.LEFT || directionToGo==Direction.RIGHT){
-            if((int) BaseScreen.fromVectorToMatrixCoordinate(enemy.getPos()).getY()<nextCell.getRow()){
-                directionToGo=Direction.DOWN;
-            }else{
-                directionToGo=Direction.UP;
+        } else if (directionToGo == Direction.LEFT || directionToGo == Direction.RIGHT) {
+            if ((int) BaseScreen.fromVectorToMatrixCoordinate(enemy.getPos()).getY() < nextCell.getRow()) {
+                directionToGo = Direction.DOWN;
+            } else {
+                directionToGo = Direction.UP;
             }
         }
         return directionToGo;
-
     }
 
+    /**
+     * Gets the next direction to go based on the current path and the enemy's position.
+     *
+     * @param path              The path to the target.
+     * @param enemyPosInMatrix The current position of the enemy in matrix coordinates.
+     * @return The next direction to go.
+     */
     public Direction getNextDirectionToGoAccordingToPath(List<MatrixCor> path, MatrixCor enemyPosInMatrix) {
         if (path.isEmpty()) {
             return Direction.NONE;
@@ -225,26 +245,18 @@ public class Ia {
             if (enemyPosInMatrix.getCol() < nextCell.getCol()) {
                 return Direction.RIGHT;
             }
-
             if (enemyPosInMatrix.getCol() > nextCell.getCol()) {
                 return Direction.LEFT;
             }
         }
-
-
         if (enemyPosInMatrix.getCol() == nextCell.getCol()) {
-
             if (enemyPosInMatrix.getRow() < nextCell.getRow()) {
                 return Direction.DOWN;
             }
-
             if (enemyPosInMatrix.getRow() > nextCell.getRow()) {
                 return Direction.UP;
             }
-
-
         }
         return Direction.NONE;
-
     }
 }

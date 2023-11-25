@@ -2,7 +2,11 @@ package main_module.model.util;
 
 import java.util.*;
 
-
+/**
+ * Represents an adjacency list graph that can be weighted and/or directed.
+ *
+ * @param <T> the type of elements stored in the graph
+ */
 public class AdjacencyListGraph<T> implements Graph<T> {
     private boolean weighted;
 
@@ -10,12 +14,24 @@ public class AdjacencyListGraph<T> implements Graph<T> {
 
     private HashMap<T, ArrayList<WeightedNeighbor<T>>> map;
 
+    /**
+     * Constructs an AdjacencyListGraph.
+     *
+     * @param weighted  true if the graph is weighted, false otherwise
+     * @param directed true if the graph is directed, false otherwise
+     */
     public AdjacencyListGraph(boolean weighted, boolean directed) {
         this.weighted = weighted;
         this.directed = directed;
         map = new HashMap<>();
     }
 
+    /**
+     * Adds a node to the graph.
+     *
+     * @param node the node to be added
+     * @return true if the node is added, false if it already exists
+     */
     public boolean addNode(T node) {
         if (!map.containsKey(node)) {
             map.put(node, new ArrayList<>());
@@ -24,6 +40,14 @@ public class AdjacencyListGraph<T> implements Graph<T> {
         return false;
     }
 
+    /**
+     * Adds an edge between two nodes with a specified weight.
+     *
+     * @param node1  the first node
+     * @param node2  the second node
+     * @param weight the weight of the edge
+     * @return true if the edge is added, false if nodes do not exist
+     */
     public boolean addEdge(T node1, T node2, int weight) {
         if (map.containsKey(node1) && map.containsKey(node2)) {
             ArrayList<WeightedNeighbor<T>> neighbors1 = map.get(node1);
@@ -37,6 +61,13 @@ public class AdjacencyListGraph<T> implements Graph<T> {
         return false;
     }
 
+    /**
+     * Gets the weight of the edge between two nodes.
+     *
+     * @param node1 the first node
+     * @param node2 the second node
+     * @return the weight of the edge, or -1 if no connection
+     */
     public int getWeight(T node1, T node2) {
         if (map.containsKey(node1)) {
             ArrayList<WeightedNeighbor<T>> neighbors = map.get(node1);
@@ -49,6 +80,13 @@ public class AdjacencyListGraph<T> implements Graph<T> {
         return -1; // Return a negative value to indicate no connection
     }
 
+    /**
+     * Checks if there is a direct influence between two nodes.
+     *
+     * @param node1 the first node
+     * @param node2 the second node
+     * @return true if there is a direct influence, false otherwise
+     */
     @Override
     public boolean nodeInfluenceDirectly(T node1, T node2) {
         if (map.containsKey(node1)) {
@@ -62,6 +100,12 @@ public class AdjacencyListGraph<T> implements Graph<T> {
         return false;
     }
 
+    /**
+     * Gets the neighbors of a given node.
+     *
+     * @param node the node to get neighbors for
+     * @return a list of neighbor nodes
+     */
     public List<T> getNeighbors(T node) {
         if (map.containsKey(node)) {
             ArrayList<WeightedNeighbor<T>> neighbors = map.get(node);
@@ -74,7 +118,11 @@ public class AdjacencyListGraph<T> implements Graph<T> {
         return Collections.emptyList();
     }
 
-
+    /**
+     * Converts the graph to a string representation.
+     *
+     * @return a string representing the adjacency list of the graph
+     */
     @Override
     public String toString() {
         StringBuilder msg = new StringBuilder("Adjacency List:\n");
@@ -97,22 +145,46 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     }
 
 
+    /**
+     * Checks if the graph is weighted.
+     *
+     * @return true if the graph is weighted, false otherwise
+     */
     @Override
     public boolean isWeighted() {
         return weighted;
     }
 
+    /**
+     * Checks if the graph is directed.
+     *
+     * @return true if the graph is directed, false otherwise
+     */
     @Override
     public boolean isDirected() {
         return directed;
     }
 
+    /**
+     * Gets the shortest path between two nodes using breadth-first search.
+     *
+     * @param origin      the starting node
+     * @param destination the destination node
+     * @return a list representing the shortest path
+     */
     @Override
     public List<T> getShortestPath(T origin, T destination) {
         List<T> shortestPath = new ArrayList<>();
         return bfs(origin, destination);
     }
 
+    /**
+     * Breadth-first search algorithm to find the shortest path between two nodes.
+     *
+     * @param origin      the starting node
+     * @param destination the destination node
+     * @return a list representing the shortest path
+     */
     private List<T> bfs(T origin, T destination) {
         if(origin.equals(destination)){
             return new ArrayList<>();
@@ -151,6 +223,14 @@ public class AdjacencyListGraph<T> implements Graph<T> {
 
     }
 
+    /**
+     * Builds the path from the destination node to the origin node using a map of predecessors.
+     *
+     * @param origin      the starting node
+     * @param destination the destination node
+     * @param mapOfPrevs  a map of predecessors
+     * @return a list representing the path from origin to destination
+     */
     private List<T> buildPath(T origin, T destination, Map<T, T> mapOfPrevs) {
         List<T> list = new ArrayList<>();
 

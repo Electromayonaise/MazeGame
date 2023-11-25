@@ -37,7 +37,9 @@ public class ScreenA extends BaseScreen {
     /**
      * Creates a new instance of the ScreenA class.
      *
-     * @param canvas The canvas where the game screen is drawn.
+     * @param canvas          The canvas where the game screen is drawn.
+     * @param adjacencyList   A flag indicating whether to use an adjacency list for map generation.
+     * @param directed        A flag indicating whether the map is directed or not.
      */
     public ScreenA(Canvas canvas,boolean adjacencyList,boolean directed) {
         super(canvas,adjacencyList,directed);
@@ -230,6 +232,10 @@ public class ScreenA extends BaseScreen {
         return false;
     }
 
+    /**
+     * Generates a random position for the portal ensuring it is placed in an odd position.
+     * If the portal is placed in an even position, it regenerates the position.
+     */
     private void generateRandomPortalPosition() {
         Random random = new Random();
         do {

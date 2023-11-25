@@ -20,73 +20,57 @@ import java.util.List;
 
 /**
  * Abstract class representing the base screen of the game.
+ * This class provides the foundation for managing game entities, updating game logic,
+ * and rendering the graphical representation of the game.
  */
 public abstract class BaseScreen {
 
+    // Constants for screen dimensions
     public static final int SCREEN_WIDTH = 1152;
     public static final int SCREEN_HEIGHT = 768;
-    protected Vector worldLimits;
 
+    // Other class attributes
+    protected Vector worldLimits;
     protected int maxCol;
     protected int maxRow;
-
     protected Canvas canvas;
     protected GraphicsContext gc;
-
     protected Player player;
-
     protected int stage = 1;
-
     protected boolean isPortalShowing;
 
-
-
-    /*-------------------representation layers---------------------------*/
+    // Representation layers
     protected int[][] tilesWithNoCollisionRepresentation;
-
     protected int[][] destroyableTilesRepresentation;
-
     protected int[][] nonDestroyableTilesRepresentation;
 
-    /*-----------------------------------------------------------*/
-
-    /*-------------entity layers---------------------*/
-
+    // Entity layers
     protected Entity[][] tilesWithNoCollision;
-
     protected Entity[][] nonDestroyableTiles;
-
     protected Entity[][] destroyableTiles;
     protected Entity[][] bombs;
     protected Entity[][] damage;
-
-    //simple grouping of all layers
-
     protected Entity[][][] fields;
-
     protected List<Entity> enemyList;
 
-    /********MANAGERS-------------------------------*/
-
+    // Managers
     protected TileManager tileManager;
-
     protected CollisionManager collisionManager;
-
     protected BombManager bombManager;
-
     protected DamageManager damageManager;
-
     protected EnemyManager enemyManager;
-
-    /**--------------------methods for map initialization---------------------------*/
-    /**** All maps must implement these methods *****/
-    public abstract int[][] initTilesWithNoCollisionRepresentation();
-
-    public abstract int[][] initNonDestroyableTilesRepresentation();
 
     protected boolean adjacency;
     protected boolean directed;
-    protected BaseScreen(Canvas canvas,boolean adjacency,boolean directed) {
+
+    /**
+     * Initializes the BaseScreen.
+     *
+     * @param canvas    The canvas on which the game is rendered.
+     * @param adjacency A boolean indicating whether the game uses adjacency representation.
+     * @param directed  A boolean indicating whether the game is directed.
+     */
+    protected BaseScreen(Canvas canvas, boolean adjacency, boolean directed) {
         this.canvas = canvas;
         gc = canvas.getGraphicsContext2D();
         tileManager = new TileManager();
@@ -94,11 +78,16 @@ public abstract class BaseScreen {
         bombManager = new BombManager(this);
         damageManager = new DamageManager(this);
         enemyManager = new EnemyManager();
-        this.adjacency=adjacency;
-        this.directed=directed;
+        this.adjacency = adjacency;
+        this.directed = directed;
     }
 
     //------------updates-----*/
+    /**
+     * Updates the game logic. Manages bomb explosions, collisions, player updates, and enemy updates.
+     *
+     * @return True if the game is over, false otherwise.
+     */
     public boolean update() {
         bombManager.manageBombs();
         collisionManager.manageCollisions(bombManager.getDamageManager().getBombDamageList());
@@ -111,13 +100,20 @@ public abstract class BaseScreen {
         return false;
     }
 
+    /**
+     * Updates the positions and behavior of enemy entities.
+     */
     public void updateEnemies() {
         for (Entity ent : enemyList) {
             Enemy enemy = (Enemy) ent;
-            enemy.update(nonDestroyableTilesRepresentation, destroyableTilesRepresentation, player,adjacency,directed);
+            enemy.update(nonDestroyableTilesRepresentation, destroyableTilesRepresentation, player, adjacency, directed);
         }
     }
 
+
+    /**
+     * Renders the enemies on the canvas.
+     */
     public void paintEnemies() {
         for (Entity ent : enemyList) {
             paintEntity(ent);
@@ -126,6 +122,9 @@ public abstract class BaseScreen {
 
     /******-----paint----******/
 
+    /**
+     * Renders the game components on the canvas, including tiles, bombs, and the player.
+     */
     public void paint() {
         gc.setFill(Color.BLACK);
         gc.fillRect(-1152, -768, canvas.getWidth() * 2, canvas.getHeight() * 2);
@@ -170,7 +169,9 @@ public abstract class BaseScreen {
     }
 
 
-
+    /**
+     * Renders a visual effect when the player increases the number of bombs.
+     */
     public void bombIncreasedEffect() {
         // Start a thread for the "+++" effect
         new Thread(() -> {
@@ -192,6 +193,11 @@ public abstract class BaseScreen {
         }).start();
     }
 
+    /**
+     * Renders the entities stored in a matrix on the canvas.
+     *
+     * @param entities The 2D array of entities to be rendered.
+     */
     public void paintEntitiesInMatrix(Entity entities[][]) {
         for (int i = 0; i < entities.length; i++) {
             for (int j = 0; j < entities[0].length; j++) {
@@ -203,6 +209,15 @@ public abstract class BaseScreen {
     }
 
     /**** Add, remove, and update entities in layers ****/
+
+    /**
+     * Removes an entity from a specific layer at the given row and column.
+     *
+     * @param row   The row index.
+     * @param col   The column index.
+     * @param field The layer index.
+     * @return True if the removal is successful, false otherwise.
+     */
     public boolean removeEntityFromField(int row, int col, int field) {
         // 0 -> tiles with no collision
         // 1 -> non-destroyable tiles
@@ -219,6 +234,15 @@ public abstract class BaseScreen {
         return flag;
     }
 
+    /**
+     * Adds an entity to a specific layer at the given row and column.
+     *
+     * @param entity The entity to be added.
+     * @param row    The row index.
+     * @param col    The column index.
+     * @param field  The layer index.
+     * @return True if the addition is successful, false otherwise.
+     */
     public boolean addEntityInField(Entity entity, int row, int col, int field) {
         // 0 -> tiles with no collision
         // 1 -> non-destroyable tiles
@@ -233,16 +257,15 @@ public abstract class BaseScreen {
         return flag;
     }
 
-    public boolean addEntityInField(Entity entity, Vector matrixCor, int field) {
-        return addEntityInField(entity, (int) matrixCor.getX(), (int) matrixCor.getY(), field);
-    }
-
-    public boolean removeEntityFromField(Vector matrixCor, int field) {
-        return removeEntityFromField((int) matrixCor.getX(), (int) matrixCor.getY(), field);
-    }
 
     /*** Interpret the representation matrix ****/
     /**************tiles with no collision*******************/
+    /**
+     * Initializes the representation matrix for tiles with no collision.
+     *
+     * @param tilesWithNoCollisionRepresentation The 2D array representing tiles with no collision.
+     * @return The initialized 2D array of entities representing tiles with no collision.
+     */
     protected Entity[][] initTilesWithNoCollision(int[][] tilesWithNoCollisionRepresentation) {
         int row = tilesWithNoCollisionRepresentation.length;
         int col = tilesWithNoCollisionRepresentation[0].length;
@@ -257,6 +280,13 @@ public abstract class BaseScreen {
         return tilesWithNoCollision;
     }
 
+    /**
+     * Interprets the numeric representation of tiles with no collision and generates corresponding entities.
+     *
+     * @param num          The numeric representation.
+     * @param posInMatrix  The position of the tile in the matrix.
+     * @return The generated entity representing the tile with no collision.
+     */
     protected Entity interpretateTilesWithNoCollision(int num, Vector posInMatrix) {
         Vector pos = fromMatrixCordinateToVector((int) posInMatrix.getX(), (int) posInMatrix.getY());
         Entity entity;
@@ -268,6 +298,12 @@ public abstract class BaseScreen {
         return entity;
     }
 
+    /**
+     * Removes enemies with zero or below health from the provided list.
+     *
+     * @param enemies The list of enemies to be checked and removed from.
+     * @return The number of entities removed.
+     */
     public int removeEnemiesWithZeroHp(List<Entity> enemies) {
         List<Entity> temp = new LinkedList<>();
         for (Entity character : enemies) {
@@ -285,6 +321,12 @@ public abstract class BaseScreen {
     }
 
     /********************non-destroyable tiles**********************/
+    /**
+     * Initializes the representation matrix for non-destroyable tiles.
+     *
+     * @param tilesWithNoCollisionRepresentation The 2D array representing non-destroyable tiles.
+     * @return The initialized 2D array of entities representing non-destroyable tiles.
+     */
     protected Entity[][] initNonDestroyableTiles(int[][] tilesWithNoCollisionRepresentation) {
         int row = tilesWithNoCollisionRepresentation.length;
         int col = tilesWithNoCollisionRepresentation[0].length;
@@ -299,6 +341,13 @@ public abstract class BaseScreen {
         return tilesWithNoCollision;
     }
 
+    /**
+     * Interprets the numeric representation of non-destroyable tiles and generates corresponding entities.
+     *
+     * @param num          The numeric representation.
+     * @param posInMatrix  The position of the tile in the matrix.
+     * @return The generated entity representing the non-destroyable tile.
+     */
     protected Entity interpretateNonDestroyableTiles(int num, Vector posInMatrix) {
         Vector pos = fromMatrixCordinateToVector((int) posInMatrix.getX(), (int) posInMatrix.getY());
         Entity entity;
@@ -310,6 +359,12 @@ public abstract class BaseScreen {
     }
 
     /******************destroyable tiles*******/
+    /**
+     * Initializes the representation matrix for destroyable tiles.
+     *
+     * @param destroyableTilesRepresentation The 2D array representing destroyable tiles.
+     * @return The initialized 2D array of entities representing destroyable tiles.
+     */
     protected Entity[][] initDestroyableTiles(int[][] destroyableTilesRepresentation) {
         int row = destroyableTilesRepresentation.length;
         int col = destroyableTilesRepresentation[0].length;
@@ -324,6 +379,13 @@ public abstract class BaseScreen {
         return destroyableTiles;
     }
 
+    /**
+     * Interprets the numeric representation of destroyable tiles and generates corresponding entities.
+     *
+     * @param num          The numeric representation.
+     * @param posInMatrix  The position of the tile in the matrix.
+     * @return The generated entity representing the destroyable tile.
+     */
     protected Entity interpretateDestroyableTiles(int num, Vector posInMatrix) {
         Vector pos = fromMatrixCordinateToVector((int) posInMatrix.getX(), (int) posInMatrix.getY());
         Entity entity;
@@ -335,6 +397,13 @@ public abstract class BaseScreen {
         return entity;
     }
 
+    /**
+     * Interprets the numeric representation of an enemy and generates the corresponding entity.
+     *
+     * @param num          The numeric representation.
+     * @param posInMatrix  The position of the enemy in the matrix.
+     * @return The generated entity representing the enemy.
+     */
     protected Entity interpretateEnemy(int num, Vector posInMatrix) {
         Vector pos = fromMatrixCordinateToVector((int) posInMatrix.getX(), (int) posInMatrix.getY());
         Entity entity;
@@ -345,6 +414,12 @@ public abstract class BaseScreen {
         return entity;
     }
 
+    /**
+     * Initializes the list of enemies based on the provided matrix representation.
+     *
+     * @param matrix The 2D array representing the positions of enemies in the matrix.
+     * @return The list of generated enemy entities.
+     */
     protected List<Entity> initEnemies(int[][] matrix) {
         List<Entity> enemyList = new LinkedList<>();
         for (int i = 0; i < matrix.length; i++) {
@@ -360,6 +435,13 @@ public abstract class BaseScreen {
     }
 
     /***odd methods*****/
+    /**
+     * Converts matrix coordinates to vector coordinates.
+     *
+     * @param row The row index in the matrix.
+     * @param col The column index in the matrix.
+     * @return The corresponding vector coordinates.
+     */
     protected Vector fromMatrixCordinateToVector(int row, int col) {
         // Each Tile measures 16x16
         int y = (int) Tile.SIZE * row;
@@ -367,6 +449,12 @@ public abstract class BaseScreen {
         return new Vector(x, y);
     }
 
+    /**
+     * Converts vector coordinates to matrix coordinates.
+     *
+     * @param vector The vector coordinates.
+     * @return The corresponding matrix coordinates.
+     */
     public static Vector fromVectorToMatrixCoordinate(Vector vector) {
         double x = vector.getX();
         double y = vector.getY();
@@ -375,6 +463,11 @@ public abstract class BaseScreen {
         return new Vector(matrixX, matrixY);
     }
 
+    /**
+     * Renders the provided entity on the canvas with appropriate translations based on player position.
+     *
+     * @param entity The entity to be rendered.
+     */
     private void paintEntity(Entity entity) {
 
         Vector playerPos = player.getPos();

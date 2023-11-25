@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="8" />
+    <option name="CUSTOM_SCOPE_NAME" value="Project Files" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5b426c63-4cc4-4f4c-a9e4-7cae1b5242ca" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/allclasses-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/allpackages-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/constant-values.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/help-doc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-files/index-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-10.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-files/index-11.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-11.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-files/index-12.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-12.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-files/index-13.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-13.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-files/index-14.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-14.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-files/index-15.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-15.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-files/index-16.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-16.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-files/index-17.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-17.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-files/index-18.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-18.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-files/index-19.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-19.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-files/index-20.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-20.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-files/index-6.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-6.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-files/index-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-7.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-files/index-8.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-8.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-files/index-9.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-9.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/legal/jquery.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/legal/jquery.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/legal/jqueryUI.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/legal/jqueryUI.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/BaseScreen.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/BaseScreen.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/Main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/control/Controller.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/control/Controller.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/control/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/control/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/control/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/control/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/Bomb.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/Bomb.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/Character.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/Character.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/CollisionTile.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/CollisionTile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/Enemy.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/Enemy.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/Entity.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/Entity.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/ICollide.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/ICollide.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/IUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/IUpdate.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/Ia.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/Ia.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/Player.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/Player.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/TemporalTile.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/TemporalTile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/Tile.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/Tile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/entities/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/enums/Direction.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/enums/Direction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/enums/EnemyType.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/enums/EnemyType.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/enums/SideEffect.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/enums/SideEffect.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/enums/TileType.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/enums/TileType.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/enums/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/enums/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/enums/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/enums/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/managers/BombManager.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/managers/BombManager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/managers/CollisionManager.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/managers/CollisionManager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/managers/DamageManager.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/managers/DamageManager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/managers/EnemyManager.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/managers/EnemyManager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/managers/TemporalTileManager.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/managers/TemporalTileManager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/managers/TileManager.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/managers/TileManager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/managers/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/managers/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/managers/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/managers/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/AdjacencyListGraph.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/AdjacencyListGraph.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/AdjacencyMatrixGraph.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/AdjacencyMatrixGraph.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/Graph.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/Graph.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/MapGenerator.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/MapGenerator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/MatrixCor.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/MatrixCor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/MazeGenerator.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/MazeGenerator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/PathFinder.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/PathFinder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/Timer.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/Timer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/Vector.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/Vector.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/WeightedNeighbor.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/WeightedNeighbor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/model/util/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/screens/MenuScreen.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/screens/MenuScreen.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/screens/ScreenA.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/screens/ScreenA.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/screens/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/screens/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/screens/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/main_module/screens/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/main_module/module-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/main_module/module-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/member-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/member-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/overview-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/script-dir/jquery-3.6.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/script-dir/jquery-3.6.1.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/script-dir/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/script-dir/jquery-ui.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/script-dir/jquery-ui.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/script-dir/jquery-ui.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/search-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/search-page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/stylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/type-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/type-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main_module/BaseScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main_module/BaseScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main_module/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main_module/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main_module/model/entities/Ia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main_module/model/entities/Ia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main_module/model/util/AdjacencyListGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main_module/model/util/AdjacencyListGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main_module/model/util/AdjacencyMatrixGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main_module/model/util/AdjacencyMatrixGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main_module/model/util/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main_module/model/util/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main_module/model/util/MazeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main_module/model/util/MazeGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main_module/model/util/PathFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main_module/model/util/PathFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main_module/screens/ScreenA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main_module/screens/ScreenA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main_module/BaseScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main_module/BaseScreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main_module/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main_module/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main_module/model/entities/Ia.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main_module/model/entities/Ia.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main_module/model/util/AdjacencyListGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main_module/model/util/AdjacencyListGraph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main_module/model/util/AdjacencyMatrixGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main_module/model/util/AdjacencyMatrixGraph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main_module/model/util/MazeGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main_module/model/util/MazeGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main_module/model/util/PathFinder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main_module/model/util/PathFinder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main_module/screens/ScreenA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main_module/screens/ScreenA.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2YeF8hCcDutJxNX42kHAqM9H7He" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5b426c63-4cc4-4f4c-a9e4-7cae1b5242ca" name="Changes" comment="" />
+      <created>1700877980457</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1700877980457</updated>
+      <workItem from="1700877981758" duration="1507000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
